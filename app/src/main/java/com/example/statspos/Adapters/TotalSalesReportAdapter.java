@@ -36,7 +36,7 @@ public class TotalSalesReportAdapter extends RecyclerView.Adapter<TotalSalesRepo
         TotalSalesReport totalSalesReport = list.get(position);
 
         holder.binding.date.setText(totalSalesReport.getDate());
-        holder.binding.invoiceNo.setText(totalSalesReport.getInvoiceNo());
+        holder.binding.invoiceNo.setText(totalSalesReport.getId());
         holder.binding.customer.setText(totalSalesReport.getCustomer());
         holder.binding.total.setText(totalSalesReport.getTotal());
     }

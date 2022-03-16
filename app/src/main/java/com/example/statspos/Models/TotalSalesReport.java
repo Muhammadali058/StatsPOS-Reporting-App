@@ -1,11 +1,11 @@
 package com.example.statspos.Models;
 
 public class TotalSalesReport {
-    String date, invoiceNo, customer, total;
+    String date, id, customer, total;
 
-    public TotalSalesReport(String date, String invoiceNo, String customer, String total) {
+    public TotalSalesReport(String date, String id, String customer, String total) {
         this.date = date;
-        this.invoiceNo = invoiceNo;
+        this.id = id;
         this.customer = customer;
         this.total = total;
     }
@@ -18,12 +18,12 @@ public class TotalSalesReport {
         this.date = date;
     }
 
-    public String getInvoiceNo() {
-        return invoiceNo;
+    public String getId() {
+        return id;
     }
 
-    public void setInvoiceNo(String invoiceNo) {
-        this.invoiceNo = invoiceNo;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCustomer() {
