@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     TotalSalesReportAdapter totalSalesReportAdapter;
     List<TotalSalesReport> list;
+    JsonObjectRequest jsonObjectRequest;
+    RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 //        String url = "http://waqeehaidar-001-site1.itempurl.com/api/reports/sales/totalSalesReport";
         String url = "http://192.168.0.101:805/api/reports/sales/totalSalesReport";
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
 
         Map<String, String> params = new HashMap<>();
         params.put("b_code", "1");
@@ -49,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
         params.put("date_from", "2022/03/09");
         params.put("date_to", "2022/03/09");
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, HP.getUrl(url, params), null, new Response.Listener<JSONObject>() {
+        new HP.ObjectRequest(this, url, params, new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
+                list = new ArrayList<>();
+
                 try {
-                    list = new ArrayList<>();
                     JSONArray jsonArray = response.getJSONArray("rows");
                     for(int i = 0; i < jsonArray.length(); i++){
                         TotalSalesReport totalSalesReport = gson.fromJson(jsonArray.getJSONObject(i).toString(), TotalSalesReport.class);
@@ -66,14 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-            }
         });
 
-        requestQueue.add(jsonObjectRequest);
     }
 
     void setTotalSalesReportAdapter(){
@@ -81,4 +79,5 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(totalSalesReportAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 }

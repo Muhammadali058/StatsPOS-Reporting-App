@@ -7,9 +7,18 @@
     tools:context=".MainActivity">
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -19,50 +28,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-            android:background="@color/blueLight">
+            <TableRow android:background="@color/blueLight">
 
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textSize="@dimen/headerTextSize"
-                android:textColor="@color/white"
-                android:padding="@dimen/headerPadding"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Date"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
 
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:text="Inv #"
-                android:textSize="@dimen/headerTextSize"
-                android:textColor="@color/white"
-                android:padding="@dimen/headerPadding"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Inv #"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Customer"
-                android:textSize="@dimen/headerTextSize"
-                android:textColor="@color/white"
-                android:padding="@dimen/headerPadding"/>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Customer"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
 
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:text="Total"
-                android:textSize="@dimen/headerTextSize"
-                android:textColor="@color/white"
-                android:padding="@dimen/headerPadding"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Total"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
 
-        </TableRow>
+            </TableRow>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            tools:listitem="@layout/total_sales_report"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/total_sales_report" />
 
-    </TableLayout>
+        </TableLayout>
 
     </HorizontalScrollView>
 
