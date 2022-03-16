@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        String url = "http://waqeehaidar-001-site1.itempurl.com/api/items/searchItem";
+//        String url = "http://192.168.0.102:8000/api/reports/sales/totalSalesReport";
+//        String url = "http://waqeehaidar-001-site1.itempurl.com/api/reports/sales/totalSalesReport";
         String url = "http://192.168.0.102:805/api/reports/sales/totalSalesReport";
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -50,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, HP.getUrl(url, params), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("Response = ", response.toString());
                 try {
                     list = new ArrayList<>();
                     JSONArray jsonArray = response.getJSONArray("rows");
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Error = ", error.toString());
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
