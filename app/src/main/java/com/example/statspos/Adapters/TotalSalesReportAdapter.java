@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.statspos.Models.TotalSalesReport;
+import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.TotalSalesReportBinding;
 

@@ -1,7 +1,6 @@
 package com.example.statspos;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -11,20 +10,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.statspos.Models.TotalSalesReport;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class HP {
+
+    public static String b_code = "1";
+    public static String s_no = "1";
+//    public static String api = "http://waqeehaidar-001-site1.itempurl.com/api/";
+    public static String api = "http://192.168.0.102:805/api/";
+
     public static String getUrl(String url, Map<String, String> mParams){
         StringBuilder stringBuilder = new StringBuilder(url);
         int i = 1;
@@ -52,14 +53,21 @@ public class HP {
     public static class ObjectRequest {
         Context context;
         String url;
-        Map<String, String> params;
         OnResponseHandler onResponseHandler;
+        Map<String,String> mParams;
 
-        public ObjectRequest(Context context, String url, Map<String, String> params, OnResponseHandler onResponseHandler) {
+        public ObjectRequest(Context context, String url, OnResponseHandler onResponseHandler) {
             this.context = context;
-            this.url = url;
-            this.params = params;
+            this.url = api + url;
             this.onResponseHandler = onResponseHandler;
+
+            this.mParams = new HashMap<>();
+            this.mParams.put("b_code", b_code);
+            this.mParams.put("s_no", s_no);
+        }
+
+        public void request(Map<String,String> params){
+            params.putAll(mParams);
 
             RequestQueue requestQueue = Volley.newRequestQueue(context);
 
@@ -71,7 +79,7 @@ public class HP {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("Error = ", error.toString());
+                    Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -86,14 +94,21 @@ public class HP {
     public static class ArrayRequest {
         Context context;
         String url;
-        Map<String, String> params;
         OnResponseHandler onResponseHandler;
+        Map<String,String> mParams;
 
-        public ArrayRequest(Context context, String url, Map<String, String> params, OnResponseHandler onResponseHandler) {
+        public ArrayRequest(Context context, String url, OnResponseHandler onResponseHandler) {
             this.context = context;
-            this.url = url;
-            this.params = params;
+            this.url = api + url;
             this.onResponseHandler = onResponseHandler;
+
+            this.mParams = new HashMap<>();
+            this.mParams.put("b_code", "1");
+            this.mParams.put("s_no", "1");
+        }
+
+        public void request(Map<String,String> params){
+            params.putAll(mParams);
 
             RequestQueue requestQueue = Volley.newRequestQueue(context);
 
@@ -105,15 +120,16 @@ public class HP {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("Error = ", error.toString());
+                    Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+//                    Log.i("Error = ", error.toString());
                 }
             });
 
             requestQueue.add(jsonArrayRequest);
         }
-
         public interface OnResponseHandler{
             void onResponse(JSONArray response);
         }
     }
+
 }

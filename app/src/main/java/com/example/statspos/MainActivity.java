@@ -3,19 +3,16 @@ package com.example.statspos;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.ClipData;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.statspos.Adapters.TotalSalesReportAdapter;
-import com.example.statspos.Models.TotalSalesReport;
+import com.example.statspos.Models.Items;
+import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.databinding.ActivityMainBinding;
 import com.google.gson.Gson;
 
@@ -33,51 +30,74 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     TotalSalesReportAdapter totalSalesReportAdapter;
     List<TotalSalesReport> list;
-    JsonObjectRequest jsonObjectRequest;
-    RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        String url = "http://waqeehaidar-001-site1.itempurl.com/api/reports/sales/totalSalesReport";
-        String url = "http://192.168.0.101:805/api/reports/sales/totalSalesReport";
-
-        requestQueue = Volley.newRequestQueue(this);
+        list = new ArrayList<>();
+        totalSalesReportAdapter = new TotalSalesReportAdapter(this, list);
+        binding.recyclerView.setAdapter(totalSalesReportAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Map<String, String> params = new HashMap<>();
-        params.put("b_code", "1");
-        params.put("s_no", "1");
-        params.put("date_from", "2022/03/09");
-        params.put("date_to", "2022/03/09");
+        params.put("date_from", "2022/03/16");
+        params.put("date_to", "2022/03/17");
 
-        new HP.ObjectRequest(this, url, params, new HP.ObjectRequest.OnResponseHandler() {
+//        HP.ObjectRequest objectRequest = new HP.ObjectRequest(this, "reports/sales/totalSalesReport", new HP.ObjectRequest.OnResponseHandler() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                Gson gson = new Gson();
+//                list.clear();
+//                try {
+//                    JSONArray jsonArray = response.getJSONArray("rows");
+//                    for(int i = 0; i < jsonArray.length(); i++){
+//                        TotalSalesReport totalSalesReport = gson.fromJson(jsonArray.getJSONObject(i).toString(), TotalSalesReport.class);
+//                        list.add(totalSalesReport);
+//                    }
+//
+//                    totalSalesReportAdapter.notifyDataSetChanged();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//
+//        objectRequest.request(params);
+
+        HP.ObjectRequest objectRequest = new HP.ObjectRequest(this, "items/searchItem", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
-                list = new ArrayList<>();
-
+                List<Items> itemsList = new ArrayList<>();
                 try {
                     JSONArray jsonArray = response.getJSONArray("rows");
                     for(int i = 0; i < jsonArray.length(); i++){
-                        TotalSalesReport totalSalesReport = gson.fromJson(jsonArray.getJSONObject(i).toString(), TotalSalesReport.class);
-                        list.add(totalSalesReport);
+                        Items item = gson.fromJson(jsonArray.getJSONObject(i).toString(), Items.class);
+                        itemsList.add(item);
                     }
 
-                    setTotalSalesReportAdapter();
+                    ArrayAdapter<Items> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, itemsList);
+                    binding.autoComplete.setAdapter(arrayAdapter);
+                    binding.autoComplete.setThreshold(1);
+
+                    binding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Items item = (Items) adapterView.getItemAtPosition(i);
+                            Toast.makeText(MainActivity.this, item.getId() + " = " + item.getItemname(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
 
+        Map<String, String> params2 = new HashMap<>();
+        params2.put("text", "");
+        objectRequest.request(params2);
     }
-
-    void setTotalSalesReportAdapter(){
-        totalSalesReportAdapter = new TotalSalesReportAdapter(this, list);
-        binding.recyclerView.setAdapter(totalSalesReportAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
 }

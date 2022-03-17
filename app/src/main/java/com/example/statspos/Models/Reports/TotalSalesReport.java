@@ -1,7 +1,11 @@
-package com.example.statspos.Models;
+package com.example.statspos.Models.Reports;
 
 public class TotalSalesReport {
     String date, id, customer, total;
+
+    public TotalSalesReport(){
+
+    }
 
     public TotalSalesReport(String date, String id, String customer, String total) {
         this.date = date;
