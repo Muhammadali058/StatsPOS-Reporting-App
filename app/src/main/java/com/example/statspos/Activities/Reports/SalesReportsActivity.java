@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.statspos.Fragments.BriefSalesReportFragment;
+import com.example.statspos.Fragments.Reports.BriefSalesReportFragment;
 import com.example.statspos.Fragments.TotalSalesReportFragment;
 import com.example.statspos.R;
 import com.example.statspos.databinding.ActivitySalesReportsBinding;
@@ -31,9 +31,9 @@ public class SalesReportsActivity extends AppCompatActivity {
         spinnerList = new ArrayList<>();
         spinnerList.add("Brief Sales Report");
         spinnerList.add("Total Sales Report");
-        spinnerList.add("Items Sales Report");
+        spinnerList.add("Customer Wise Report");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, spinnerList);
         binding.spinner.setAdapter(arrayAdapter);
 
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -24,7 +24,7 @@ public class HP {
     public static String b_code = "1";
     public static String s_no = "1";
 //    public static String api = "http://waqeehaidar-001-site1.itempurl.com/api/";
-    public static String api = "http://192.168.0.102:805/api/";
+    public static String api = "http://192.168.0.101:805/api/";
 
     public static String getUrl(String url, Map<String, String> mParams){
         StringBuilder stringBuilder = new StringBuilder(url);

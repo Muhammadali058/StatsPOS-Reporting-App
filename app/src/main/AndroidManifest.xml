@@ -13,7 +13,7 @@
         android:theme="@style/Theme.StatsPOS"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".Activities.PurchaseReportsActivity"
+            android:name=".Activities.Reports.PurchaseReportsActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.Reports.SalesReportsActivity"
@@ -27,6 +27,7 @@
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true" >
+
         </activity>
     </application>
 

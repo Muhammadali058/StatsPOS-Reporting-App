@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         itemsList.add(item);
                     }
 
-                    ArrayAdapter<Items> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, itemsList);
+                    ArrayAdapter<Items> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, itemsList);
                     binding.autoComplete.setAdapter(arrayAdapter);
                     binding.autoComplete.setThreshold(1);
 

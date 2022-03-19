@@ -1,4 +1,4 @@
-package com.example.statspos.Activities;
+package com.example.statspos.Activities.Reports;
 
 import androidx.appcompat.app.AppCompatActivity;
 
