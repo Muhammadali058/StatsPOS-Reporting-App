@@ -1,9 +1,8 @@
-package com.example.statspos;
+package com.example.statspos.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.statspos.Adapters.TotalSalesReportAdapter;
+import com.example.statspos.HP;
 import com.example.statspos.Models.Items;
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.databinding.ActivityMainBinding;
