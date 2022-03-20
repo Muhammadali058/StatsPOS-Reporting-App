@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items;
 import com.example.statspos.Models.Reports.TotalSalesReport;

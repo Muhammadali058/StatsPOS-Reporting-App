@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters;
+package com.example.statspos.Adapters.Reports;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.TotalSalesReportBinding;
+import com.example.statspos.databinding.TotalSalesReportHolderBinding;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class TotalSalesReportAdapter extends RecyclerView.Adapter<TotalSalesRepo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.total_sales_report, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.total_sales_report_holder, parent, false);
         return new ViewHolder(view);
     }
 
@@ -47,10 +47,10 @@ public class TotalSalesReportAdapter extends RecyclerView.Adapter<TotalSalesRepo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TotalSalesReportBinding binding;
+        TotalSalesReportHolderBinding binding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = TotalSalesReportBinding.bind(itemView);
+            binding = TotalSalesReportHolderBinding.bind(itemView);
         }
     }
 }

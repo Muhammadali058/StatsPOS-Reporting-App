@@ -25,8 +25,8 @@ public class HP {
 
     public static String b_code = "1";
     public static String s_no = "1";
-    public static String api = "http://waqeehaidar-001-site1.itempurl.com/api/";
-//    public static String api = "http://192.168.0.102:805/api/";
+//    public static String api = "http://waqeehaidar-001-site1.itempurl.com/api/";
+    public static String api = "http://192.168.0.102:805/api/";
 
     public static String formatCurrency(String number){
         DecimalFormat formatter = new DecimalFormat("###,###,###.00");
@@ -61,11 +61,8 @@ public class HP {
         StringBuilder stringBuilder = new StringBuilder(url);
         int i = 1;
         for (Map.Entry<String,String> entry: mParams.entrySet()) {
-            String key;
-            String value;
-
-            key = entry.getKey(); // URLEncoder.encode(entry.getKey(), "UTF-8");
-            value = entry.getValue(); // URLEncoder.encode((String) entry.getValue(), "UTF-8");
+            String key = entry.getKey(); // URLEncoder.encode(entry.getKey(), "UTF-8");
+            String value = entry.getValue(); // URLEncoder.encode((String) entry.getValue(), "UTF-8");
             if(i == 1) {
                 stringBuilder.append("?" + key + "=" + value);
             } else {

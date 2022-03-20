@@ -1,26 +1,40 @@
 package com.example.statspos.Activities.Reports;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.SalesReportsAdapter;
 import com.example.statspos.Fragments.Reports.BriefSalesReportFragment;
 import com.example.statspos.Fragments.TotalSalesReportFragment;
+import com.example.statspos.HP;
+import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.ActivitySalesReportsBinding;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SalesReportsActivity extends AppCompatActivity {
 
-    List<String> spinnerList;
     ActivitySalesReportsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,38 +42,58 @@ public class SalesReportsActivity extends AppCompatActivity {
         binding = ActivitySalesReportsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        spinnerList = new ArrayList<>();
-        spinnerList.add("Total Sales Report");
-        spinnerList.add("Brief Sales Report");
-        spinnerList.add("Customer Wise Report");
+        init();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, spinnerList);
-        binding.spinner.setAdapter(arrayAdapter);
+        SalesReportsAdapter salesReportsAdapter = new SalesReportsAdapter(this);
+        binding.viewPager2.setAdapter(salesReportsAdapter);
 
-        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position){
                     case 0:
-                        loadFragment(new TotalSalesReportFragment());
+                        tab.setText("Total Sales Report");
                         break;
                     case 1:
-                        loadFragment(new BriefSalesReportFragment());
+                        tab.setText("Brief Sales Report");
                         break;
                 }
             }
+        });
 
+        tabLayoutMediator.attach();
+    }
+
+    private void init(){
+        binding.paramsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onClick(View view) {
+                if(binding.advanceLayout.getVisibility() == View.GONE){
+                    binding.advanceLayout.setVisibility(View.VISIBLE);
+                }else {
+                    binding.advanceLayout.setVisibility(View.GONE);
+                }
             }
         });
     }
 
-    void loadFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment).commit();
-//        fragmentTransaction.addToBackStack(null);
+    public String getDateFrom(){
+        return binding.dateFromTB.getText().toString();
+    }
+
+    public String getDateTo(){
+        return binding.dateToTB.getText().toString();
+    }
+
+    public Map<String, String> getRBParams(){
+        Map<String, String> params = new HashMap<>();
+
+        if(binding.typeRetailRB.isChecked()){
+            params.put("is_retail", "1");
+        }else if(binding.typeWholesaleRB.isChecked()){
+            params.put("is_retail", "0");
+        }
+
+        return params;
     }
 }

@@ -2,6 +2,7 @@ package com.example.statspos.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -10,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
+import com.example.statspos.Activities.Reports.SalesReportsActivity;
+import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
@@ -22,15 +25,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class TotalSalesReportFragment extends Fragment {
 
@@ -38,7 +36,7 @@ public class TotalSalesReportFragment extends Fragment {
     TotalSalesReportAdapter totalSalesReportAdapter;
     List<TotalSalesReport> list;
     HP.ObjectRequest objectRequest;
-
+    SalesReportsActivity salesReportsActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentTotalSalesReportBinding.bind(inflater.inflate(R.layout.fragment_total_sales_report, container, false));
@@ -46,28 +44,12 @@ public class TotalSalesReportFragment extends Fragment {
         init();
         loadReport();
 
-        binding.paramsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(binding.advanceLayout.getVisibility() == View.GONE){
-                    binding.advanceLayout.setVisibility(View.VISIBLE);
-                }else {
-                    binding.advanceLayout.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        binding.typeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                loadReport();
-            }
-        });
-
         return binding.getRoot();
     }
 
     private void init(){
+        salesReportsActivity = (SalesReportsActivity) getActivity();
+
         list = new ArrayList<>();
         totalSalesReportAdapter = new TotalSalesReportAdapter(getContext(), list);
         binding.recyclerView.setAdapter(totalSalesReportAdapter);
@@ -80,18 +62,29 @@ public class TotalSalesReportFragment extends Fragment {
                 Gson gson = new Gson();
 
                 try {
-                    binding.grandTotal.setText(HP.formatCurrency(response.getJSONObject("total").getString("grandTotal")));
+                    JSONArray rows = response.getJSONArray("rows");
+                    if(rows.length() > 0){
+                        JSONObject total = response.getJSONObject("total");
+                        binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
+                        binding.totalBills.setText(total.getString("totalRows"));
 
-                    JSONArray jsonArray = response.getJSONArray("rows");
-                    for(int i = 0; i < jsonArray.length(); i++){
-                        TotalSalesReport totalSalesReport = gson.fromJson(jsonArray.getJSONObject(i).toString(), TotalSalesReport.class);
-                        list.add(totalSalesReport);
+                        for(int i = 0; i < rows.length(); i++){
+                            TotalSalesReport totalSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalSalesReport.class);
+                            list.add(totalSalesReport);
+                        }
+
+                        totalSalesReportAdapter.notifyDataSetChanged();
                     }
-
-                    totalSalesReportAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        binding.refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadReport();
             }
         });
     }
@@ -102,15 +95,12 @@ public class TotalSalesReportFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-        params.put("date_from", binding.dateFromTB.getText().toString());
-        params.put("date_to", binding.dateToTB.getText().toString());
+        params.put("date_from", salesReportsActivity.getDateFrom());
+        params.put("date_to", salesReportsActivity.getDateTo());
 
-        if(binding.typeRetailRB.isChecked()){
-            params.put("is_retail", "1");
-        }else if(binding.typeWholesaleRB.isChecked()){
-            params.put("is_retail", "0");
-        }
+        params.putAll(salesReportsActivity.getRBParams());
 
         return params;
     }
+
 }
