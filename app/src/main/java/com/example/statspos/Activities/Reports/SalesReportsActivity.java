@@ -29,8 +29,8 @@ public class SalesReportsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         spinnerList = new ArrayList<>();
-        spinnerList.add("Brief Sales Report");
         spinnerList.add("Total Sales Report");
+        spinnerList.add("Brief Sales Report");
         spinnerList.add("Customer Wise Report");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, spinnerList);
@@ -41,10 +41,10 @@ public class SalesReportsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        loadFragment(new BriefSalesReportFragment());
+                        loadFragment(new TotalSalesReportFragment());
                         break;
                     case 1:
-                        loadFragment(new TotalSalesReportFragment());
+                        loadFragment(new BriefSalesReportFragment());
                         break;
                 }
             }

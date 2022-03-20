@@ -19,66 +19,63 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/autoComplete">
+        app:layout_constraintTop_toBottomOf="@+id/autoComplete">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TableRow android:background="@color/blueLight">
-
-                <TextView
-                    android:layout_width="90dp"
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Date"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Inv #"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
+                    <TableRow android:background="@color/blueLight">
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Customer"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
+                        <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/headerPadding"
+                            android:text="Date"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/headerTextSize" />
 
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Total"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
+                        <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/headerPadding"
+                            android:text="Inv #"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/headerTextSize" />
 
-            </TableRow>
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/headerPadding"
+                            android:text="Customer"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/headerTextSize" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/total_sales_report" />
+                        <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/headerPadding"
+                            android:text="Total"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/headerTextSize" />
 
-        </TableLayout>
+                    </TableRow>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:listitem="@layout/total_sales_report" />
+
+                </TableLayout>
 
     </HorizontalScrollView>
 

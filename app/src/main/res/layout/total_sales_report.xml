@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -12,7 +13,7 @@
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="90dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="2022/03/16"
                 android:textSize="@dimen/rowTextSize"
@@ -21,7 +22,7 @@
 
             <TextView
                 android:id="@+id/invoiceNo"
-                android:layout_width="90dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="589687548"
                 android:textSize="@dimen/rowTextSize"
@@ -30,17 +31,16 @@
 
             <TextView
                 android:id="@+id/customer"
-                android:layout_width="200dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:text="R.B Traders"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"
-                android:layout_weight="1"/>
+                android:padding="@dimen/rowPadding"/>
 
             <TextView
                 android:id="@+id/total"
-                android:layout_width="90dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="15,005815"
                 android:textSize="@dimen/rowTextSize"
