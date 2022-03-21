@@ -58,10 +58,10 @@ public class TotalSalesReportFragment extends Fragment {
         objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/totalSalesReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
-                list.clear();
-                Gson gson = new Gson();
-
                 try {
+                    list.clear();
+                    Gson gson = new Gson();
+
                     JSONArray rows = response.getJSONArray("rows");
                     if(rows.length() > 0){
                         JSONObject total = response.getJSONObject("total");
@@ -72,9 +72,12 @@ public class TotalSalesReportFragment extends Fragment {
                             TotalSalesReport totalSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalSalesReport.class);
                             list.add(totalSalesReport);
                         }
-
-                        totalSalesReportAdapter.notifyDataSetChanged();
+                    }else {
+                        binding.grandTotal.setText("0.00");
+                        binding.totalBills.setText("0");
                     }
+
+                    totalSalesReportAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

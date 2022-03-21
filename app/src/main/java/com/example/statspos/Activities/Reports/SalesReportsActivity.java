@@ -94,6 +94,24 @@ public class SalesReportsActivity extends AppCompatActivity {
             params.put("is_retail", "0");
         }
 
+        if(binding.salesOnCashRB.isChecked()){
+            params.put("sales_on", "1");
+        }else if(binding.salesOnCreditRB.isChecked()){
+            params.put("sales_on", "2");
+        }
+
+        if(binding.salesTypeSalesRB.isChecked()){
+            params.put("sales_type", "1");
+        }else if(binding.salesTypeReturnRB.isChecked()){
+            params.put("sales_type", "2");
+        }
+
+        if(binding.mopCashRB.isChecked()){
+            params.put("is_mop_cash_bank", "1");
+        }else if(binding.mopBankRB.isChecked()){
+            params.put("is_mop_cash_bank", "0");
+        }
+
         return params;
     }
 }

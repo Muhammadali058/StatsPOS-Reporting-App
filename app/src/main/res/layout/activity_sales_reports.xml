@@ -20,6 +20,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
+<!--        Date -->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="date"
-                android:text="2022/03/09"/>
+                android:text="2022/03/21"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="2022/03/20"/>
+                android:text="2022/03/21"/>
 
             <Button
                 android:id="@+id/paramsBtn"
@@ -60,7 +61,7 @@
 
 
         </LinearLayout>
-
+<!--        Radio Buttons -->
         <LinearLayout
             android:id="@+id/advanceLayout"
             android:layout_width="match_parent"
@@ -136,6 +137,78 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Credit"
+                    android:layout_weight="1"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sales Type"
+                android:layout_gravity="center"/>
+
+            <RadioGroup
+                android:id="@+id/salesTypeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:checkedButton="@id/salesTypeBothRB">
+
+                <RadioButton
+                    android:id="@+id/salesTypeBothRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Both"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/salesTypeSalesRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sales"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/salesTypeReturnRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Returns"
+                    android:layout_weight="1"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M.O.P"
+                android:layout_gravity="center"/>
+
+            <RadioGroup
+                android:id="@+id/mopRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:checkedButton="@id/mopBothRB">
+
+                <RadioButton
+                    android:id="@+id/mopBothRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Both"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/mopCashRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cash"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/mopBankRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank"
                     android:layout_weight="1"/>
 
             </RadioGroup>
