@@ -1,13 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Reports.BriefSalesReportFragment">
+    tools:context=".Fragments.Reports.BriefSalesReportFragment"
+    android:orientation="vertical">
 
-    <TextView
+    <Button
+        android:id="@+id/refreshBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Brief Sales Report" />
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp">
 
-</FrameLayout>
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:background="@color/blueLight">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Date"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Description"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Bills"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Total"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/brief_sales_report_holder" />
+
+        </TableLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>

@@ -82,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
                     binding.autoComplete.setAdapter(arrayAdapter);
                     binding.autoComplete.setThreshold(1);
 
+                    binding.autoComplete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            binding.autoComplete.showDropDown();
+                        }
+                    });
+                    
                     binding.autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

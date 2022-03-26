@@ -114,4 +114,11 @@ public class SalesReportsActivity extends AppCompatActivity {
 
         return params;
     }
+
+    public void setRadioButtonsVisivility(boolean visible){
+        if(visible)
+            binding.paramsBtn.setVisibility(View.VISIBLE);
+        else
+            binding.paramsBtn.setVisibility(View.GONE);
+    }
 }
