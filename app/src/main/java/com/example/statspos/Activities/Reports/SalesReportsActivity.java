@@ -2,40 +2,22 @@ package com.example.statspos.Activities.Reports;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
-import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
-import com.example.statspos.Adapters.SalesReportsAdapter;
-import com.example.statspos.Fragments.Reports.BriefSalesReportFragment;
-import com.example.statspos.Fragments.TotalSalesReportFragment;
-import com.example.statspos.HP;
-import com.example.statspos.Models.Reports.TotalSalesReport;
-import com.example.statspos.R;
+import com.example.statspos.Adapters.SalesReportsFragmentAdapter;
 import com.example.statspos.databinding.ActivitySalesReportsBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SalesReportsActivity extends AppCompatActivity {
 
     ActivitySalesReportsBinding binding;
+    SalesReportsFragmentAdapter salesReportsFragmentAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,28 +25,42 @@ public class SalesReportsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         init();
+    }
 
-        SalesReportsAdapter salesReportsAdapter = new SalesReportsAdapter(this);
-        binding.viewPager2.setAdapter(salesReportsAdapter);
+    private void init(){
+        salesReportsFragmentAdapter = new SalesReportsFragmentAdapter(this);
+        binding.viewPager2.setAdapter(salesReportsFragmentAdapter);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position){
                     case 0:
-                        tab.setText("Total Sales Report");
+                        tab.setText("Brief Report");
                         break;
                     case 1:
-                        tab.setText("Brief Sales Report");
+                        tab.setText("Total Report");
+                        break;
+                    case 2:
+                        tab.setText("By Customer");
+                        break;
+                    case 3:
+                        tab.setText("By User");
+                        break;
+                    case 4:
+                        tab.setText("By Item");
+                        break;
+                    case 5:
+                        tab.setText("By Category");
+                        break;
+                    case 6:
+                        tab.setText("By Vendor");
                         break;
                 }
             }
         });
-
         tabLayoutMediator.attach();
-    }
 
-    private void init(){
         binding.paramsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,4 +117,5 @@ public class SalesReportsActivity extends AppCompatActivity {
         else
             binding.paramsBtn.setVisibility(View.GONE);
     }
+
 }

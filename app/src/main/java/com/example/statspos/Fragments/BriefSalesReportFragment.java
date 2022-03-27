@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments.Reports;
+package com.example.statspos.Fragments;
 
 import android.os.Bundle;
 
@@ -10,19 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Reports.BriefSalesReportAdapter;
-import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.BriefSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.BriefSalesReport;
-import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentBriefSalesReportBinding;
-import com.example.statspos.databinding.FragmentTotalSalesReportBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +44,6 @@ public class BriefSalesReportFragment extends Fragment {
 
     private void init(){
         salesReportsActivity = (SalesReportsActivity) getActivity();
-        salesReportsActivity.setRadioButtonsVisivility(false);
 
         list = new ArrayList<>();
         briefSalesReportAdapter = new BriefSalesReportAdapter(getContext(), list);
@@ -96,6 +91,12 @@ public class BriefSalesReportFragment extends Fragment {
         //params.putAll(salesReportsActivity.getRBParams());
 
         return params;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        salesReportsActivity.setRadioButtonsVisivility(false);
     }
 
 }

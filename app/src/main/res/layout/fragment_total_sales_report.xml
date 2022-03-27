@@ -7,17 +7,19 @@
     android:orientation="vertical"
     tools:context=".Fragments.TotalSalesReportFragment">
 
-    <Button
+    <ImageView
         android:id="@+id/refreshBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Refresh"/>
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:src="@drawable/ic_refresh"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginHorizontal="10dp">
 
         <TextView
             android:id="@+id/grandTotalLabel"
@@ -59,63 +61,6 @@
 
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="10dp">
-
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow android:background="@color/blueLight">
-
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Date"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Inv #"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Customer"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Total"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-            </TableRow>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/total_sales_report_holder" />
-
-        </TableLayout>
-
-    </HorizontalScrollView>
+    <include layout="@layout/total_sales_report_helper"/>
 
 </LinearLayout>

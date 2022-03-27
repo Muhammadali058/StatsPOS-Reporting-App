@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Reports;
+package com.example.statspos.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

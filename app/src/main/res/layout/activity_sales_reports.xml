@@ -11,7 +11,8 @@
         android:id="@+id/tabLayout"
         style="@style/customTabLayout"
         app:tabTextAppearance="@style/customTabTextAppearance"
-        android:layout_width="match_parent"
+        app:tabMode="scrollable"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <LinearLayout
@@ -39,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="date"
-                android:text="2022/03/26"/>
+                android:text="2022/03/27"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,14 +52,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="2022/03/26"/>
+                android:text="2022/03/27"/>
 
-            <Button
+            <ImageView
                 android:id="@+id/paramsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adv"/>
-
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_dropdown"/>
 
         </LinearLayout>
 <!--        Radio Buttons -->

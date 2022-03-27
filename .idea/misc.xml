@@ -5,14 +5,18 @@
       <map>
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_sales_reports.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_sales_report_holder.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_brief_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_category_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_customer_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_item_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_user_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_vendor_sales_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_sales_report.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_sales_report.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_sales_report_helper.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_sales_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_main.xml" value="0.3398148148148148" />
-        <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_sales_reports.xml" value="0.3398148148148148" />
-        <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_sales_report_holder.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_brief_sales_report.xml" value="0.3398148148148148" />
-        <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_sales_report.xml" value="0.3398148148148148" />
-        <entry key="..\:/Users/OK/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_sales_report_holder.xml" value="0.3398148148148148" />
       </map>
     </option>
   </component>

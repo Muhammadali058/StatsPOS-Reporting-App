@@ -2,23 +2,22 @@ package com.example.statspos.Fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Reports.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.TotalSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentTotalSalesReportBinding;
+import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -33,13 +32,18 @@ import java.util.Map;
 public class TotalSalesReportFragment extends Fragment {
 
     FragmentTotalSalesReportBinding binding;
+    TotalSalesReportHelperBinding bindingInclude;
+
     TotalSalesReportAdapter totalSalesReportAdapter;
     List<TotalSalesReport> list;
     HP.ObjectRequest objectRequest;
     SalesReportsActivity salesReportsActivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentTotalSalesReportBinding.bind(inflater.inflate(R.layout.fragment_total_sales_report, container, false));
+
+        bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
         loadReport();
@@ -52,8 +56,9 @@ public class TotalSalesReportFragment extends Fragment {
 
         list = new ArrayList<>();
         totalSalesReportAdapter = new TotalSalesReportAdapter(getContext(), list);
-        binding.recyclerView.setAdapter(totalSalesReportAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        bindingInclude.recyclerView.setAdapter(totalSalesReportAdapter);
+        bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/totalSalesReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
@@ -104,6 +109,12 @@ public class TotalSalesReportFragment extends Fragment {
         params.putAll(salesReportsActivity.getRBParams());
 
         return params;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        salesReportsActivity.setRadioButtonsVisivility(true);
     }
 
 }
