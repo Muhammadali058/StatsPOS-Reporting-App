@@ -6,11 +6,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.statspos.Fragments.BriefSalesReportFragment;
-import com.example.statspos.Fragments.ByCategorySalesReportFragment;
-import com.example.statspos.Fragments.ByCustomerSalesReportFragment;
-import com.example.statspos.Fragments.ByItemSalesReportFragment;
-import com.example.statspos.Fragments.ByUserSalesReportFragment;
-import com.example.statspos.Fragments.ByVendorSalesReportFragment;
+import com.example.statspos.Fragments.CategorySalesReportFragment;
+import com.example.statspos.Fragments.CustomerSalesReportFragment;
+import com.example.statspos.Fragments.ItemSalesReportFragment;
+import com.example.statspos.Fragments.UserSalesReportFragment;
+import com.example.statspos.Fragments.VendorSalesReportFragment;
 import com.example.statspos.Fragments.TotalSalesReportFragment;
 
 public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
@@ -27,15 +27,15 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
             case 1:
                 return new TotalSalesReportFragment();
             case 2:
-                return new ByCustomerSalesReportFragment();
+                return new CustomerSalesReportFragment();
             case 3:
-                return new ByUserSalesReportFragment();
+                return new UserSalesReportFragment();
             case 4:
-                return new ByItemSalesReportFragment();
+                return new ItemSalesReportFragment();
             case 5:
-                return new ByCategorySalesReportFragment();
+                return new CategorySalesReportFragment();
             case 6:
-                return new ByVendorSalesReportFragment();
+                return new VendorSalesReportFragment();
             default:
                 return new BriefSalesReportFragment();
         }

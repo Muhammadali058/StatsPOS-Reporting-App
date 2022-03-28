@@ -1,5 +1,6 @@
 package com.example.statspos.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,8 @@ public class BriefSalesReportFragment extends Fragment {
     List<BriefSalesReport> list;
     HP.ArrayRequest arrayRequest;
     SalesReportsActivity salesReportsActivity;
+    ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBriefSalesReportBinding.bind(inflater.inflate(R.layout.fragment_brief_sales_report, container, false));
@@ -44,6 +47,8 @@ public class BriefSalesReportFragment extends Fragment {
 
     private void init(){
         salesReportsActivity = (SalesReportsActivity) getActivity();
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
 
         list = new ArrayList<>();
         briefSalesReportAdapter = new BriefSalesReportAdapter(getContext(), list);
@@ -65,6 +70,7 @@ public class BriefSalesReportFragment extends Fragment {
                     }
 
                     briefSalesReportAdapter.notifyDataSetChanged();
+                    progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -80,6 +86,7 @@ public class BriefSalesReportFragment extends Fragment {
     }
 
     private void loadReport(){
+        progressDialog.show();
         arrayRequest.request(getParams());
     }
 
@@ -97,6 +104,7 @@ public class BriefSalesReportFragment extends Fragment {
     public void onResume() {
         super.onResume();
         salesReportsActivity.setRadioButtonsVisivility(false);
+//        loadReport();
     }
 
 }

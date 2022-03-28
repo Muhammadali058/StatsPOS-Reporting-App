@@ -12,7 +12,7 @@ import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
 import com.example.statspos.databinding.FragmentByUserSalesReportBinding;
 
-public class ByUserSalesReportFragment extends Fragment {
+public class UserSalesReportFragment extends Fragment {
 
     FragmentByUserSalesReportBinding binding;
     @Override

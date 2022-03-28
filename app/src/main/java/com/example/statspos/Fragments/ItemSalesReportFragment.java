@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
+import com.example.statspos.databinding.FragmentByItemSalesReportBinding;
 
-public class ByCustomerSalesReportFragment extends Fragment {
+public class ItemSalesReportFragment extends Fragment {
 
-    FragmentByCustomerSalesReportBinding binding;
+    FragmentByItemSalesReportBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentByCustomerSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_customer_sales_report, container, false));
+        binding = FragmentByItemSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_item_sales_report, container, false));
 
 
 

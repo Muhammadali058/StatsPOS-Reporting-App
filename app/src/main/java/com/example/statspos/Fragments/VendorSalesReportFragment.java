@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
-import com.example.statspos.databinding.FragmentByItemSalesReportBinding;
+import com.example.statspos.databinding.FragmentByCategorySalesReportBinding;
+import com.example.statspos.databinding.FragmentByVendorSalesReportBinding;
 
-public class ByItemSalesReportFragment extends Fragment {
+public class VendorSalesReportFragment extends Fragment {
 
-    FragmentByItemSalesReportBinding binding;
+    FragmentByVendorSalesReportBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentByItemSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_item_sales_report, container, false));
+        binding = FragmentByVendorSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_vendor_sales_report, container, false));
 
 
 
