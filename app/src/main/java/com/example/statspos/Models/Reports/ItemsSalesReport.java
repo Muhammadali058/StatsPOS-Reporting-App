@@ -1,16 +1,16 @@
 package com.example.statspos.Models.Reports;
 
 public class ItemsSalesReport {
-    String date, itemname, pcs, crtn, rate, crtnRate, disc, total;
+    String date, itemname, qty, crtn, rate, crtnRate, disc, total;
 
     public ItemsSalesReport(){
 
     }
 
-    public ItemsSalesReport(String date, String itemname, String pcs, String crtn, String rate, String crtnRate, String disc, String total) {
+    public ItemsSalesReport(String date, String itemname, String qty, String crtn, String rate, String crtnRate, String disc, String total) {
         this.date = date;
         this.itemname = itemname;
-        this.pcs = pcs;
+        this.qty = qty;
         this.crtn = crtn;
         this.rate = rate;
         this.crtnRate = crtnRate;
@@ -34,12 +34,12 @@ public class ItemsSalesReport {
         this.itemname = itemname;
     }
 
-    public String getPcs() {
-        return pcs;
+    public String getQty() {
+        return qty;
     }
 
-    public void setPcs(String pcs) {
-        this.pcs = pcs;
+    public void setQty(String qty) {
+        this.qty = qty;
     }
 
     public String getCrtn() {
