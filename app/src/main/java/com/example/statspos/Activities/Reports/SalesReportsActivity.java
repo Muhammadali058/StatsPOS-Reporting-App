@@ -31,7 +31,7 @@ public class SalesReportsActivity extends AppCompatActivity {
     private void init(){
         salesReportsFragmentAdapter = new SalesReportsFragmentAdapter(this);
         binding.viewPager2.setAdapter(salesReportsFragmentAdapter);
-        binding.viewPager2.setOffscreenPageLimit(2);
+        binding.viewPager2.setOffscreenPageLimit(7);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override

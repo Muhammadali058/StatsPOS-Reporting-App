@@ -1,4 +1,4 @@
-package com.example.statspos.Models;
+package com.example.statspos.Models.Accounts;
 
 import androidx.annotation.NonNull;
 

@@ -59,6 +59,25 @@
             android:textColor="@color/textColor"
             android:textSize="20sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/grandTotal"
+            android:text="Total Qty"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/totalQtyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/grandTotal"
+            android:text="Pcs = 450, Crtn = 500"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
     </RelativeLayout>
 
     <include layout="@layout/items_sales_report_helper"/>

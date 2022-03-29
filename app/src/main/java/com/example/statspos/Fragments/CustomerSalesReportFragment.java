@@ -6,21 +6,17 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import com.example.statspos.Activities.MainActivity;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Adapters.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Customers;
-import com.example.statspos.Models.Items;
+import com.example.statspos.Models.Accounts.Customers;
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
@@ -54,7 +50,7 @@ public class CustomerSalesReportFragment extends Fragment {
         bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-        loadReport();
+//        loadReport();
 
         return binding.getRoot();
     }

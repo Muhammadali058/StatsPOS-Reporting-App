@@ -6,28 +6,21 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Adapters.ItemsSalesReportAdapter;
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Customers;
-import com.example.statspos.Models.Items;
+import com.example.statspos.Models.Items.Items;
 import com.example.statspos.Models.Reports.ItemsSalesReport;
-import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
 import com.example.statspos.databinding.FragmentByItemSalesReportBinding;
 import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
-import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -57,7 +50,7 @@ public class ItemSalesReportFragment extends Fragment {
         bindingInclude = ItemsSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-        loadReport();
+//        loadReport();
 
         return binding.getRoot();
     }
@@ -86,6 +79,8 @@ public class ItemSalesReportFragment extends Fragment {
                     if(rows.length() > 0){
                         JSONObject total = response.getJSONObject("total");
                         binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
+                        String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
+                        binding.totalQtyLabel.setText(totalQty);
 
                         for(int i = 0; i < rows.length(); i++){
                             ItemsSalesReport itemsSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsSalesReport.class);
@@ -93,6 +88,7 @@ public class ItemSalesReportFragment extends Fragment {
                         }
                     }else {
                         binding.grandTotal.setText("0.00");
+                        binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
                     }
 
                     itemsSalesReportAdapter.notifyDataSetChanged();

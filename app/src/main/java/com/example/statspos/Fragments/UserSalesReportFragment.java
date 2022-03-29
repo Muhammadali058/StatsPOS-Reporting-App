@@ -16,11 +16,9 @@ import android.widget.ArrayAdapter;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Adapters.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Customers;
 import com.example.statspos.Models.Reports.TotalSalesReport;
 import com.example.statspos.Models.Users;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
 import com.example.statspos.databinding.FragmentByUserSalesReportBinding;
 import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
@@ -52,7 +50,7 @@ public class UserSalesReportFragment extends Fragment {
         bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-        loadReport();
+//        loadReport();
 
         return binding.getRoot();
     }
