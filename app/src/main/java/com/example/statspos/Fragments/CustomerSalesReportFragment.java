@@ -108,6 +108,32 @@ public class CustomerSalesReportFragment extends Fragment {
                 loadReport();
             }
         });
+
+        binding.customerInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.customerTB.showDropDown();
+            }
+        });
+
+        binding.customerTB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    binding.customerTB.showDropDown();
+                }
+            }
+        });
+
+        binding.customerTB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedCustomer = (Customers) adapterView.getItemAtPosition(i);
+                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                loadReport();
+            }
+        });
     }
 
     private void loadCustomers(){
@@ -126,31 +152,6 @@ public class CustomerSalesReportFragment extends Fragment {
                     ArrayAdapter<Customers> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, customersList);
                     binding.customerTB.setAdapter(arrayAdapter);
 
-                    binding.customerInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            binding.customerTB.showDropDown();
-                        }
-                    });
-
-                    binding.customerTB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                        @Override
-                        public void onFocusChange(View view, boolean b) {
-                            if(b){
-                                binding.customerTB.showDropDown();
-                            }
-                        }
-                    });
-
-                    binding.customerTB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedCustomer = (Customers) adapterView.getItemAtPosition(i);
-                            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                            loadReport();
-                        }
-                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.statspos.HP;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
 import com.example.statspos.databinding.FragmentByItemSalesReportBinding;

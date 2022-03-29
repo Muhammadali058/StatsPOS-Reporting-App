@@ -16,6 +16,7 @@
         <TableRow android:background="@color/blueLight">
 
             <TextView
+                android:id="@+id/dateLabel"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/headerPadding"
@@ -24,6 +25,7 @@
                 android:textSize="@dimen/headerTextSize" />
 
             <TextView
+                android:id="@+id/invoiceNoLabel"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/headerPadding"
@@ -32,6 +34,7 @@
                 android:textSize="@dimen/headerTextSize" />
 
             <TextView
+                android:id="@+id/customerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/headerPadding"
@@ -41,6 +44,7 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:id="@+id/totalLabel"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/headerPadding"

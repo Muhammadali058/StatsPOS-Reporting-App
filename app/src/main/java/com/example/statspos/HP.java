@@ -2,6 +2,7 @@ package com.example.statspos;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -11,51 +12,55 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.statspos.Models.Customers;
+import com.example.statspos.Models.Settings;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HP {
 
+    public static Settings settings = null;
     public static String b_code = "1";
     public static String s_no = "1";
 //    public static String api = "http://waqeehaidar-001-site1.itempurl.com/api/";
     public static String api = "http://192.168.0.102:805/api/";
 
+    public static void loadSettings(Context context){
+        ArrayRequest arrayRequest = new ArrayRequest(context, "settings", new ArrayRequest.OnResponseHandler() {
+            @Override
+            public void onResponse(JSONArray response) {
+                Gson gson = new Gson();
+                if(response.length() > 0){
+                    try {
+                        settings = (Settings) gson.fromJson(response.getJSONObject(0).toString(), Settings.class);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        Map<String, String> params = new HashMap<>();
+        params.put("b_code", b_code);
+        params.put("s_no", s_no);
+        arrayRequest.request(params);
+    }
+
     public static String formatCurrency(String number){
         DecimalFormat formatter = new DecimalFormat("###,###,###.00");
         return formatter.format(Double.parseDouble(number));
     }
-
-//    public static String getUrl(String url, Map<String, Object> mParams){
-//        StringBuilder stringBuilder = new StringBuilder(url);
-//        int i = 1;
-//        for (Map.Entry<String,Object> entry: mParams.entrySet()) {
-//            String key;
-//            String value;
-//            try {
-//                key = URLEncoder.encode(entry.getKey(), "UTF-8");
-//                value = URLEncoder.encode((String) entry.getValue(), "UTF-8");
-//                if(i == 1) {
-//                    stringBuilder.append("?" + key + "=" + value);
-//                } else {
-//                    stringBuilder.append("&" + key + "=" + value);
-//                }
-//            } catch (UnsupportedEncodingException e) {
-//                e.printStackTrace();
-//            }
-//            i++;
-//
-//        }
-//
-//        return stringBuilder.toString();
-//    }
 
     public static String getUrl(String url, Map<String, String> mParams){
         StringBuilder stringBuilder = new StringBuilder(url);

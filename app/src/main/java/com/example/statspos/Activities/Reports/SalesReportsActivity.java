@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.statspos.Adapters.SalesReportsFragmentAdapter;
+import com.example.statspos.HP;
 import com.example.statspos.databinding.ActivitySalesReportsBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -30,6 +31,7 @@ public class SalesReportsActivity extends AppCompatActivity {
     private void init(){
         salesReportsFragmentAdapter = new SalesReportsFragmentAdapter(this);
         binding.viewPager2.setAdapter(salesReportsFragmentAdapter);
+        binding.viewPager2.setOffscreenPageLimit(2);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -71,6 +73,8 @@ public class SalesReportsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        HP.loadSettings(this);
     }
 
     public String getDateFrom(){

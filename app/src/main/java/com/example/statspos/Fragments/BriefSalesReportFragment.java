@@ -40,7 +40,7 @@ public class BriefSalesReportFragment extends Fragment {
         binding = FragmentBriefSalesReportBinding.bind(inflater.inflate(R.layout.fragment_brief_sales_report, container, false));
 
         init();
-        loadReport();
+//        loadReport();
 
         return binding.getRoot();
     }

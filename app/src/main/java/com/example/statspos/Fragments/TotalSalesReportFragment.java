@@ -44,11 +44,10 @@ public class TotalSalesReportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentTotalSalesReportBinding.bind(inflater.inflate(R.layout.fragment_total_sales_report, container, false));
-
         bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-        loadReport();
+//        loadReport();
 
         return binding.getRoot();
     }

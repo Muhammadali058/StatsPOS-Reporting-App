@@ -1,8 +1,13 @@
 package com.example.statspos.Adapters;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.statspos.Fragments.BriefSalesReportFragment;
@@ -13,7 +18,10 @@ import com.example.statspos.Fragments.UserSalesReportFragment;
 import com.example.statspos.Fragments.VendorSalesReportFragment;
 import com.example.statspos.Fragments.TotalSalesReportFragment;
 
+import java.util.ArrayList;
+
 public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
+
     public SalesReportsFragmentAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -45,4 +53,5 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return 7;
     }
+
 }
