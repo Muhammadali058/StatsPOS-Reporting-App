@@ -79,8 +79,18 @@ public class VendorSalesReportFragment extends Fragment {
                     if(rows.length() > 0){
                         JSONObject total = response.getJSONObject("total");
                         binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
-                        String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
-                        binding.totalQtyLabel.setText(totalQty);
+
+                        // When not sale cartons
+                        if(!HP.settings.isSaleCartons()){
+                            bindingInclude.crtnLabel.setVisibility(View.GONE);
+                            bindingInclude.crtnRateLabel.setVisibility(View.GONE);
+
+                            String totalQty = "Pcs = " + total.getString("totalQty");
+                            binding.totalQtyLabel.setText(totalQty);
+                        }else { // When sale cartons
+                            String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
+                            binding.totalQtyLabel.setText(totalQty);
+                        }
 
                         for(int i = 0; i < rows.length(); i++){
                             ItemsSalesReport itemsSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsSalesReport.class);
@@ -88,7 +98,13 @@ public class VendorSalesReportFragment extends Fragment {
                         }
                     }else {
                         binding.grandTotal.setText("0.00");
-                        binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
+
+                        // When not sale cartons
+                        if(!HP.settings.isSaleCartons()){
+                            binding.totalQtyLabel.setText("Pcs = 0");
+                        }else {
+                            binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
+                        }
                     }
 
                     itemsSalesReportAdapter.notifyDataSetChanged();

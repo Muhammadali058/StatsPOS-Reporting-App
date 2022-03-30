@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.ItemsSalesReportHolderBinding;
@@ -43,6 +44,11 @@ public class ItemsSalesReportAdapter extends RecyclerView.Adapter<ItemsSalesRepo
         holder.binding.crtnRate.setText(itemsSalesReport.getCrtnRate());
         holder.binding.disc.setText(itemsSalesReport.getDisc());
         holder.binding.total.setText(itemsSalesReport.getTotal());
+
+        if(!HP.settings.isSaleCartons()){
+            holder.binding.crtn.setVisibility(View.GONE);
+            holder.binding.crtnRate.setVisibility(View.GONE);
+        }
     }
 
     @Override
