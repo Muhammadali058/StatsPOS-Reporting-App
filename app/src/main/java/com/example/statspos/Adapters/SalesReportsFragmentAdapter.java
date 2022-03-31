@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.statspos.Fragments.BriefSalesReportFragment;
 import com.example.statspos.Fragments.CategorySalesReportFragment;
+import com.example.statspos.Fragments.ChartSalesFragment;
 import com.example.statspos.Fragments.CustomerSalesReportFragment;
 import com.example.statspos.Fragments.ItemSalesReportFragment;
 import com.example.statspos.Fragments.UserSalesReportFragment;
@@ -31,7 +32,7 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new BriefSalesReportFragment();
+                return new ChartSalesFragment();
             case 1:
                 return new TotalSalesReportFragment();
             case 2:
