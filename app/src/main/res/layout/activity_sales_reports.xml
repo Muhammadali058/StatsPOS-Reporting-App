@@ -63,6 +63,7 @@
                 android:src="@drawable/ic_dropdown"/>
 
         </LinearLayout>
+
 <!--        Radio Buttons -->
         <LinearLayout
             android:id="@+id/advanceLayout"
@@ -71,149 +72,216 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Type"
-                android:layout_gravity="center"/>
+                android:orientation="horizontal">
 
-            <RadioGroup
-                android:id="@+id/typeRadioGroup"
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Type:"
+                    android:layout_gravity="center"/>
+
+                <RadioGroup
+                    android:id="@+id/typeRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/typeBothRB">
+
+                    <RadioButton
+                        android:id="@+id/typeBothRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Both"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
+
+                    <RadioButton
+                        android:id="@+id/typeRetailRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Retail"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
+
+                    <RadioButton
+                        android:id="@+id/typeWholesaleRB"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:text="Wholesale"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:checkedButton="@id/typeBothRB">
+                android:layout_marginTop="5dp">
 
-                <RadioButton
-                    android:id="@+id/typeBothRB"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="Both"
-                    android:layout_weight="1"/>
+                    android:text="Sales On:"
+                    android:layout_gravity="center"/>
 
-                <RadioButton
-                    android:id="@+id/typeRetailRB"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/salesOnRadioGroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Retail"
-                    android:layout_weight="1"/>
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/salesOnBothRB">
 
-                <RadioButton
-                    android:id="@+id/typeWholesaleRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Wholesale"
-                    android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/salesOnBothRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Both"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/salesOnCashRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Cash"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sales On"
-                android:layout_gravity="center"/>
+                    <RadioButton
+                        android:id="@+id/salesOnCreditRB"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:text="Credit"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <RadioGroup
-                android:id="@+id/salesOnRadioGroup"
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:checkedButton="@id/salesOnBothRB">
+                android:layout_marginTop="5dp">
 
-                <RadioButton
-                    android:id="@+id/salesOnBothRB"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="Both"
-                    android:layout_weight="1"/>
+                    android:text="Sales Type:"
+                    android:layout_gravity="center"/>
 
-                <RadioButton
-                    android:id="@+id/salesOnCashRB"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/salesTypeRadioGroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cash"
-                    android:layout_weight="1"/>
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/salesTypeBothRB">
 
-                <RadioButton
-                    android:id="@+id/salesOnCreditRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Credit"
-                    android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/salesTypeBothRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Both"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/salesTypeSalesRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Sales"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sales Type"
-                android:layout_gravity="center"/>
+                    <RadioButton
+                        android:id="@+id/salesTypeReturnRB"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:text="Returns"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <RadioGroup
-                android:id="@+id/salesTypeRadioGroup"
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:checkedButton="@id/salesTypeBothRB">
+                android:layout_marginTop="5dp">
 
-                <RadioButton
-                    android:id="@+id/salesTypeBothRB"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="Both"
-                    android:layout_weight="1"/>
+                    android:text="M.O.P"
+                    android:layout_gravity="center"/>
 
-                <RadioButton
-                    android:id="@+id/salesTypeSalesRB"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/mopRadioGroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sales"
-                    android:layout_weight="1"/>
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/mopBothRB">
 
-                <RadioButton
-                    android:id="@+id/salesTypeReturnRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Returns"
-                    android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/mopBothRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Both"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/mopCashRB"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="Cash"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="M.O.P"
-                android:layout_gravity="center"/>
+                    <RadioButton
+                        android:id="@+id/mopBankRB"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:text="Bank"
+                        android:textSize="16sp"
+                        android:scaleX=".7"
+                        android:scaleY=".7"
+                        android:layout_weight="1"/>
 
-            <RadioGroup
-                android:id="@+id/mopRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:checkedButton="@id/mopBothRB">
+                </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/mopBothRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Both"
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/mopCashRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cash"
-                    android:layout_weight="1"/>
-
-                <RadioButton
-                    android:id="@+id/mopBankRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bank"
-                    android:layout_weight="1"/>
-
-            </RadioGroup>
+            </LinearLayout>
 
         </LinearLayout>
 
