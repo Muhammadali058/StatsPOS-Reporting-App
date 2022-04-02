@@ -31,7 +31,8 @@ public class SalesReportsActivity extends AppCompatActivity {
     private void init(){
         salesReportsFragmentAdapter = new SalesReportsFragmentAdapter(this);
         binding.viewPager2.setAdapter(salesReportsFragmentAdapter);
-        binding.viewPager2.setOffscreenPageLimit(7);
+        binding.viewPager2.setOffscreenPageLimit(8);
+        binding.viewPager2.setUserInputEnabled(false);
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -57,6 +58,9 @@ public class SalesReportsActivity extends AppCompatActivity {
                         break;
                     case 6:
                         tab.setText("By Vendor");
+                        break;
+                    case 7:
+                        tab.setText("Charts");
                         break;
                 }
             }

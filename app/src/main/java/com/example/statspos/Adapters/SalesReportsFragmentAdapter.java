@@ -32,7 +32,7 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new ChartSalesFragment();
+                return new BriefSalesReportFragment();
             case 1:
                 return new TotalSalesReportFragment();
             case 2:
@@ -45,6 +45,8 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
                 return new CategorySalesReportFragment();
             case 6:
                 return new VendorSalesReportFragment();
+            case 7:
+                return new ChartSalesFragment();
             default:
                 return new BriefSalesReportFragment();
         }
@@ -52,7 +54,7 @@ public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 8;
     }
 
 }

@@ -17,6 +17,7 @@ import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Adapters.ItemsSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
+import com.example.statspos.Models.Reports.BriefSalesReport;
 import com.example.statspos.Models.Reports.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentByItemSalesReportBinding;
@@ -39,6 +40,7 @@ public class ItemSalesReportFragment extends Fragment {
 
     ItemsSalesReportAdapter itemsSalesReportAdapter;
     List<ItemsSalesReport> list;
+    HP.ArrayRequest getItemObjectRequest;
     HP.ObjectRequest objectRequest;
     SalesReportsActivity salesReportsActivity;
     Items selectedItem = null;
@@ -50,7 +52,6 @@ public class ItemSalesReportFragment extends Fragment {
         bindingInclude = ItemsSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-//        loadReport();
 
         return binding.getRoot();
     }
@@ -68,6 +69,25 @@ public class ItemSalesReportFragment extends Fragment {
         bindingInclude.recyclerView.setAdapter(itemsSalesReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Request to getItem
+        getItemObjectRequest = new HP.ArrayRequest(getContext(), "items/getItem", new HP.ArrayRequest.OnResponseHandler() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    if(response.length() > 0){
+                        Gson gson = new Gson();
+                        selectedItem = gson.fromJson(response.getJSONObject(0).toString(), Items.class);
+                        binding.itemnameTB.setText(selectedItem.getItemname());
+                        hideKeyboard();
+                        loadReport();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Report Request
         objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/itemsSalesReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
@@ -115,6 +135,18 @@ public class ItemSalesReportFragment extends Fragment {
             }
         });
 
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = binding.itemnameTB.getText().toString();
+                if(text != "") {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("text", text);
+                    getItemObjectRequest.request(params);
+                }
+            }
+        });
+
         binding.refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,8 +174,7 @@ public class ItemSalesReportFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = (Items) adapterView.getItemAtPosition(i);
-                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                hideKeyboard();
                 loadReport();
             }
         });
@@ -194,11 +225,15 @@ public class ItemSalesReportFragment extends Fragment {
         return params;
     }
 
+    private void hideKeyboard(){
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         salesReportsActivity.setRadioButtonsVisivility(true);
-//        loadReport();
     }
 
 }
