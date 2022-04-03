@@ -1,7 +1,10 @@
 package com.example.statspos;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -11,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Models.Settings;
 import com.google.gson.Gson;
 
@@ -19,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -160,4 +165,89 @@ public class HP {
         }
     }
 
+    public static class OnDateClickListener implements View.OnClickListener {
+        Context context;
+        OnDateSet onDateSet;
+
+        public OnDateClickListener(Context context, OnDateSet onDateSet) {
+            this.context = context;
+            this.onDateSet = onDateSet;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Calendar calendar = Calendar.getInstance();
+            final int year = calendar.get(Calendar.YEAR);
+            final int month = calendar.get(Calendar.MONTH);
+            final int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context,
+//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int day) {
+                            month = month + 1;
+
+                            String dayString = String.valueOf(day);
+                            String monthString = String.valueOf(month);
+                            String yearString = String.valueOf(year);
+
+                            if(day<10){
+                                dayString = "0" + dayString;
+                            }
+
+                            if(month<10){
+                                monthString = "0" + monthString;
+                            }
+
+                            String date = dayString + "-" + monthString + "-" + yearString;
+
+                            onDateSet.onDateSet(date);
+                        }
+                    }, year, month, day);
+
+//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            datePickerDialog.show();
+        }
+    }
+
+    public interface OnDateSet{
+        void onDateSet(String date);
+    }
+
+    public static String reverseDate(String date){
+        String reversedDate = date;
+
+        if(date.contains("/")){
+            String[] dates = date.split("/");
+            reversedDate = dates[2] + "/" + dates[1] + "/" + dates[0];
+        }else if(date.contains("-")){
+            String[] dates = date.split("-");
+            reversedDate = dates[2] + "-" + dates[1] + "-" + dates[0];
+        }
+
+        return reversedDate;
+    }
+
+    public static String getTodayDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String dayString = String.valueOf(day);
+        String monthString = String.valueOf(month);
+        String yearString = String.valueOf(year);
+
+        if(day<10){
+            dayString = "0" + dayString;
+        }
+
+        if(month<10){
+            monthString = "0" + monthString;
+        }
+
+        String date = dayString + "-" + monthString + "-" + yearString;
+
+        return date;
+    }
 }

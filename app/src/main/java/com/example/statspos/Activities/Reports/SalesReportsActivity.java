@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.example.statspos.Adapters.SalesReportsFragmentAdapter;
 import com.example.statspos.HP;
@@ -36,6 +37,9 @@ public class SalesReportsActivity extends AppCompatActivity {
     }
 
     private void init(){
+        binding.dateFromTB.setText(HP.getTodayDate());
+        binding.dateToTB.setText(HP.getTodayDate());
+
         salesReportsFragmentAdapter = new SalesReportsFragmentAdapter(this);
         binding.viewPager2.setAdapter(salesReportsFragmentAdapter);
         binding.viewPager2.setOffscreenPageLimit(8);
@@ -87,39 +91,28 @@ public class SalesReportsActivity extends AppCompatActivity {
 
         HP.loadSettings(this);
 
-
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        binding.dateFromTB.setOnClickListener(new View.OnClickListener() {
+        binding.dateFromTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
             @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(SalesReportsActivity.this,
-//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int day) {
-                                month = month + 1;
-                                String date = year + "/" + month + "/" + day;
-                                
-                                binding.dateFromTB.setText(date);
-
-                            }
-                        }, year, month, day);
-
-//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
+            public void onDateSet(String date) {
+                binding.dateFromTB.setText(date);
             }
-        });
+        }));
+
+        binding.dateToTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
+            @Override
+            public void onDateSet(String date) {
+                binding.dateToTB.setText(date);
+            }
+        }));
     }
 
-    public String getDateFrom(){
-        return binding.dateFromTB.getText().toString();
-    }
+    public Map<String, String> getDateParams(){
+        Map<String, String> params = new HashMap<>();
 
-    public String getDateTo(){
-        return binding.dateToTB.getText().toString();
+        params.put("date_from", HP.reverseDate(binding.dateFromTB.getText().toString()));
+        params.put("date_to", HP.reverseDate(binding.dateToTB.getText().toString()));
+
+        return params;
     }
 
     public Map<String, String> getRBParams(){

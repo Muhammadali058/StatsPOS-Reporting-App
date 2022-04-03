@@ -266,11 +266,12 @@ public class CategorySalesReportFragment extends Fragment {
 
     private Map<String, String> getParamsCategories(){
         Map<String, String> params = new HashMap<>();
-        params.put("date_from", salesReportsActivity.getDateFrom());
-        params.put("date_to", salesReportsActivity.getDateTo());
+//        params.put("date_from", salesReportsActivity.getDateFrom());
+//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("report_by", "category");
         params.put("id", selectedCategory.getId());
 
+        params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());
 
         return params;
@@ -278,11 +279,12 @@ public class CategorySalesReportFragment extends Fragment {
 
     private Map<String, String> getParamsSubCategories(){
         Map<String, String> params = new HashMap<>();
-        params.put("date_from", salesReportsActivity.getDateFrom());
-        params.put("date_to", salesReportsActivity.getDateTo());
+//        params.put("date_from", salesReportsActivity.getDateFrom());
+//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("report_by", "sub_category");
         params.put("id", selectedSubCategory.getId());
 
+        params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());
 
         return params;

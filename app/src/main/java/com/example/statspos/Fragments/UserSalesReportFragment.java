@@ -167,10 +167,11 @@ public class UserSalesReportFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-        params.put("date_from", salesReportsActivity.getDateFrom());
-        params.put("date_to", salesReportsActivity.getDateTo());
+//        params.put("date_from", salesReportsActivity.getDateFrom());
+//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("user_id", selectedUser.getId());
 
+        params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());
 
         return params;

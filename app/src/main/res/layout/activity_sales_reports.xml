@@ -30,30 +30,53 @@
             android:orientation="horizontal"
             android:visibility="visible">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateFromTBInputLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="From:"/>
-
-            <EditText
-                android:id="@+id/dateFromTB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginRight="10dp"
+                android:hint="Date From"
+                app:endIconDrawable="@drawable/ic_date"
+                app:errorEnabled="true"
+                app:endIconCheckable="true"
+                app:endIconMode="custom"
                 android:layout_weight="1"
-                android:inputType="date"
-                android:text="2022/04/02"/>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="To:"/>
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/dateFromTB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:inputType="date"
+                    android:clickable="false"
+                    android:focusable="false"/>
 
-            <EditText
-                android:id="@+id/dateToTB"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateToTBInputLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginRight="10dp"
+                android:hint="Date To"
+                app:endIconDrawable="@drawable/ic_date"
+                app:errorEnabled="true"
+                app:endIconCheckable="true"
+                app:endIconMode="custom"
                 android:layout_weight="1"
-                android:text="2022/04/02"/>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/dateToTB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:inputType="date"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
                 android:id="@+id/paramsBtn"

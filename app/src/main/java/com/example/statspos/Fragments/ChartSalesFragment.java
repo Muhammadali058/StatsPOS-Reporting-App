@@ -194,9 +194,10 @@ public class ChartSalesFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-        params.put("date_from", salesReportsActivity.getDateFrom());
-        params.put("date_to", salesReportsActivity.getDateTo());
+//        params.put("date_from", salesReportsActivity.getDateFrom());
+//        params.put("date_to", salesReportsActivity.getDateTo());
 
+        params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());
 
         return params;
