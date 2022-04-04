@@ -89,8 +89,6 @@ public class SalesReportsActivity extends AppCompatActivity {
             }
         });
 
-        HP.loadSettings(this);
-
         binding.dateFromTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
             @Override
             public void onDateSet(String date) {
@@ -145,7 +143,7 @@ public class SalesReportsActivity extends AppCompatActivity {
         return params;
     }
 
-    public void setRadioButtonsVisivility(boolean visible){
+    public void setRadioButtonsVisibility(boolean visible){
         if(visible)
             binding.paramsBtn.setVisibility(View.VISIBLE);
         else

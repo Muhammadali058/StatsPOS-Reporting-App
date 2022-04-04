@@ -120,7 +120,7 @@ public class TotalSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisivility(true);
+        salesReportsActivity.setRadioButtonsVisibility(true);
 //        loadReport();
     }
 

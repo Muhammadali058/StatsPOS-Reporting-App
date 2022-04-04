@@ -7,28 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.HP;
-import com.example.statspos.databinding.ActivityMainBinding;
+import com.example.statspos.R;
+import com.example.statspos.databinding.ActivityReportsBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class ReportsActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityReportsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityReportsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         init();
     }
 
     private void init(){
-        HP.loadSettings(this);
-
-        binding.reportsBtn.setOnClickListener(new View.OnClickListener() {
+        binding.salesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ReportsActivity.class);
+                Intent intent = new Intent(ReportsActivity.this, SalesReportsActivity.class);
                 startActivity(intent);
             }
         });

@@ -30,53 +30,33 @@
             android:orientation="horizontal"
             android:visibility="visible">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateFromTBInputLayout"
+            <EditText
+                android:id="@+id/dateFromTB"
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:hint="Date From"
-                app:endIconDrawable="@drawable/ic_date"
-                app:errorEnabled="true"
-                app:endIconCheckable="true"
-                app:endIconMode="custom"
-                android:layout_weight="1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/dateFromTB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:completionThreshold="1"
-                    android:inputType="date"
-                    android:clickable="false"
-                    android:focusable="false"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dateToTBInputLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
+                android:background="@drawable/textbox_bg"
+                android:drawableEnd="@drawable/ic_date"
+                android:padding="5dp"
+                android:textSize="12sp"
                 android:layout_marginRight="10dp"
-                android:hint="Date To"
-                app:endIconDrawable="@drawable/ic_date"
-                app:errorEnabled="true"
-                app:endIconCheckable="true"
-                app:endIconMode="custom"
+                android:clickable="false"
+                android:focusable="false"/>
+
+            <EditText
+                android:id="@+id/dateToTB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/dateToTB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:completionThreshold="1"
-                    android:inputType="date"
-                    android:clickable="false"
-                    android:focusable="false"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Date From"
+                android:background="@drawable/textbox_bg"
+                android:drawableEnd="@drawable/ic_date"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:clickable="false"
+                android:focusable="false"/>
 
             <ImageView
                 android:id="@+id/paramsBtn"
@@ -98,12 +78,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="Type:"
+                    android:textSize="12sp"
                     android:layout_gravity="center"/>
 
                 <RadioGroup
@@ -115,22 +97,22 @@
 
                     <RadioButton
                         android:id="@+id/typeBothRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Both"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/typeRetailRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Retail"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -139,8 +121,8 @@
                         android:layout_height="20dp"
                         android:text="Wholesale"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                 </RadioGroup>
@@ -154,9 +136,10 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="Sales On:"
+                    android:textSize="12sp"
                     android:layout_gravity="center"/>
 
                 <RadioGroup
@@ -168,22 +151,22 @@
 
                     <RadioButton
                         android:id="@+id/salesOnBothRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Both"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/salesOnCashRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Cash"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -192,8 +175,8 @@
                         android:layout_height="20dp"
                         android:text="Credit"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                 </RadioGroup>
@@ -207,9 +190,10 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="Sales Type:"
+                    android:textSize="12sp"
                     android:layout_gravity="center"/>
 
                 <RadioGroup
@@ -221,22 +205,22 @@
 
                     <RadioButton
                         android:id="@+id/salesTypeBothRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Both"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/salesTypeSalesRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Sales"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -245,8 +229,8 @@
                         android:layout_height="20dp"
                         android:text="Returns"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                 </RadioGroup>
@@ -260,9 +244,10 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="M.O.P"
+                    android:textSize="12sp"
                     android:layout_gravity="center"/>
 
                 <RadioGroup
@@ -274,22 +259,22 @@
 
                     <RadioButton
                         android:id="@+id/mopBothRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Both"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/mopCashRB"
-                        android:layout_width="50dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:text="Cash"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -298,8 +283,8 @@
                         android:layout_height="20dp"
                         android:text="Bank"
                         android:textSize="16sp"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
                         android:layout_weight="1"/>
 
                 </RadioGroup>

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/drawable/textbox_bg.xml" value="0.1395" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_sales_reports.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_reports.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_sales_reports.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_sales_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_brief_sales_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_by_category_sales_report.xml" value="0.27291666666666664" />
