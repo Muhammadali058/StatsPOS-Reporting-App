@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.CategorySalesReportFragment"
+    tools:context=".Fragments.Purchase.CategoryPurchaseReportFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,33 +12,41 @@
         android:orientation="horizontal"
         android:layout_marginHorizontal="10dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/categoryInputLayout"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:hint="Select Category"
-            app:endIconDrawable="@drawable/ic_dropdown"
-            app:errorEnabled="true"
-            app:endIconCheckable="true"
-            app:endIconMode="custom"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+            android:background="@drawable/textbox_bg">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/categoryTB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:completionThreshold="1"/>
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Category"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/categoryDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/categoryRefreshBtn"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_marginTop="15dp"
             android:src="@drawable/ic_refresh"
-            android:layout_gravity="top"/>
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -47,35 +54,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/subCategoryInputLayout"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:hint="Select Sub-Category"
-            app:endIconDrawable="@drawable/ic_dropdown"
-            app:errorEnabled="true"
-            app:endIconCheckable="true"
-            app:endIconMode="custom"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+            android:background="@drawable/textbox_bg">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/subCategoryTB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:completionThreshold="1"/>
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Sub-Category"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/subCategoryDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/subCategoryRefreshBtn"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_marginTop="15dp"
             android:src="@drawable/ic_refresh"
-            android:layout_gravity="top"/>
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -93,7 +109,7 @@
             android:layout_alignParentLeft="true"
             android:text="Total"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/grandTotal"
@@ -102,7 +118,7 @@
             android:layout_alignParentRight="true"
             android:text="0.00"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,7 +127,7 @@
             android:layout_below="@+id/grandTotal"
             android:text="Total Qty"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/totalQtyLabel"
@@ -121,10 +137,10 @@
             android:layout_alignParentRight="true"
             android:text="0"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
-    <include layout="@layout/items_sales_report_helper"/>
+    <include layout="@layout/items_purchase_report_helper"/>
 
 </LinearLayout>

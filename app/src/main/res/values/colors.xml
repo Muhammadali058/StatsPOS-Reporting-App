@@ -11,6 +11,7 @@
 
     <color name="blueDark">#0554F2</color>
     <color name="blueLight">#2E6FF2</color>
-    <color name="light">#D6D6D6</color>
+<!--    <color name="light">#D6D6D6</color>-->
+    <color name="light">#F3F3F3</color>
     <color name="textColor">#4D4D4D</color>
 </resources>

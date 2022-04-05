@@ -1,45 +1,31 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Sales;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Accounts.Customers;
-import com.example.statspos.Models.Reports.BriefSalesReport;
-import com.example.statspos.Models.Reports.ChartSalesReport;
-import com.example.statspos.Models.Reports.TotalSalesReport;
+import com.example.statspos.Models.Reports.ChartReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentChartSalesBinding;
-import com.example.statspos.databinding.TotalSalesReportHelperBinding;
-import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ChartSalesFragment extends Fragment {
@@ -58,7 +44,6 @@ public class ChartSalesFragment extends Fragment {
         binding = FragmentChartSalesBinding.bind(inflater.inflate(R.layout.fragment_chart_sales, container, false));
 
         init();
-//        loadReport();
 
         return binding.getRoot();
     }
@@ -90,8 +75,8 @@ public class ChartSalesFragment extends Fragment {
 
                     if(response.length() > 0){
                         for(int i = 0; i < response.length(); i++){
-                            ChartSalesReport chartSalesReport = gson.fromJson(response.getJSONObject(i).toString(), ChartSalesReport.class);
-                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartSalesReport.getTotal())));
+                            ChartReport chartReport = gson.fromJson(response.getJSONObject(i).toString(), ChartReport.class);
+                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartReport.getTotal())));
                         }
                     }
 
@@ -123,8 +108,8 @@ public class ChartSalesFragment extends Fragment {
 
                     if(response.length() > 0){
                         for(int i = 0; i < response.length(); i++){
-                            ChartSalesReport chartSalesReport = gson.fromJson(response.getJSONObject(i).toString(), ChartSalesReport.class);
-                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartSalesReport.getTotal())));
+                            ChartReport chartReport = gson.fromJson(response.getJSONObject(i).toString(), ChartReport.class);
+                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartReport.getTotal())));
                         }
                     }
 
@@ -156,8 +141,8 @@ public class ChartSalesFragment extends Fragment {
 
                     if(response.length() > 0){
                         for(int i = 0; i < response.length(); i++){
-                            ChartSalesReport chartSalesReport = gson.fromJson(response.getJSONObject(i).toString(), ChartSalesReport.class);
-                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartSalesReport.getTotal())));
+                            ChartReport chartReport = gson.fromJson(response.getJSONObject(i).toString(), ChartReport.class);
+                            barEntries.add(new BarEntry(i+1, Float.valueOf(chartReport.getTotal())));
                         }
                     }
 
@@ -194,8 +179,6 @@ public class ChartSalesFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-//        params.put("date_from", salesReportsActivity.getDateFrom());
-//        params.put("date_to", salesReportsActivity.getDateTo());
 
         params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());

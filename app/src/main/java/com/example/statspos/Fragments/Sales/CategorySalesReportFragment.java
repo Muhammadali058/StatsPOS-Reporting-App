@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Sales;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,15 +14,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.ItemsSalesReportAdapter;
+import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Categories;
-import com.example.statspos.Models.Items.Items;
 import com.example.statspos.Models.Items.SubCategories;
-import com.example.statspos.Models.Reports.ItemsSalesReport;
+import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByCategorySalesReportBinding;
-import com.example.statspos.databinding.FragmentByCustomerSalesReportBinding;
+import com.example.statspos.databinding.FragmentCategorySalesReportBinding;
 import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
 import com.google.gson.Gson;
 
@@ -37,7 +35,7 @@ import java.util.Map;
 
 public class CategorySalesReportFragment extends Fragment {
 
-    FragmentByCategorySalesReportBinding binding;
+    FragmentCategorySalesReportBinding binding;
     ItemsSalesReportHelperBinding bindingInclude;
 
     ItemsSalesReportAdapter itemsSalesReportAdapter;
@@ -50,11 +48,10 @@ public class CategorySalesReportFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentByCategorySalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_category_sales_report, container, false));
+        binding = FragmentCategorySalesReportBinding.bind(inflater.inflate(R.layout.fragment_category_sales_report, container, false));
         bindingInclude = ItemsSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-//        loadReport();
 
         return binding.getRoot();
     }
@@ -127,7 +124,7 @@ public class CategorySalesReportFragment extends Fragment {
             }
         });
 
-        binding.categoryInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
+        binding.categoryDropdownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.categoryTB.showDropDown();
@@ -165,7 +162,7 @@ public class CategorySalesReportFragment extends Fragment {
             }
         });
 
-        binding.subCategoryInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
+        binding.subCategoryDropdownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.subCategoryTB.showDropDown();
@@ -266,8 +263,6 @@ public class CategorySalesReportFragment extends Fragment {
 
     private Map<String, String> getParamsCategories(){
         Map<String, String> params = new HashMap<>();
-//        params.put("date_from", salesReportsActivity.getDateFrom());
-//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("report_by", "category");
         params.put("id", selectedCategory.getId());
 
@@ -279,8 +274,6 @@ public class CategorySalesReportFragment extends Fragment {
 
     private Map<String, String> getParamsSubCategories(){
         Map<String, String> params = new HashMap<>();
-//        params.put("date_from", salesReportsActivity.getDateFrom());
-//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("report_by", "sub_category");
         params.put("id", selectedSubCategory.getId());
 

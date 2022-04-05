@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Purchase;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -10,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
+import com.example.statspos.Adapters.Purchase.BriefPurchaseReportAdapter;
 import com.example.statspos.Adapters.Sales.BriefSalesReportAdapter;
 import com.example.statspos.HP;
+import com.example.statspos.Models.Reports.Purchase.BriefPurchaseReport;
 import com.example.statspos.Models.Reports.Sales.BriefSalesReport;
 import com.example.statspos.R;
+import com.example.statspos.databinding.FragmentBriefPurchaseReportBinding;
 import com.example.statspos.databinding.FragmentBriefSalesReportBinding;
 import com.google.gson.Gson;
 
@@ -26,18 +30,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BriefSalesReportFragment extends Fragment {
+public class BriefPurchaseReportFragment extends Fragment {
 
-    FragmentBriefSalesReportBinding binding;
-    BriefSalesReportAdapter briefSalesReportAdapter;
-    List<BriefSalesReport> list;
+    FragmentBriefPurchaseReportBinding binding;
+    BriefPurchaseReportAdapter briefPurchaseReportAdapter;
+    List<BriefPurchaseReport> list;
     HP.ArrayRequest arrayRequest;
-    SalesReportsActivity salesReportsActivity;
+    PurchaseReportsActivity purchaseReportsActivity;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentBriefSalesReportBinding.bind(inflater.inflate(R.layout.fragment_brief_sales_report, container, false));
+        binding = FragmentBriefPurchaseReportBinding.bind(inflater.inflate(R.layout.fragment_brief_purchase_report, container, false));
 
         init();
         loadReport();
@@ -46,16 +50,16 @@ public class BriefSalesReportFragment extends Fragment {
     }
 
     private void init(){
-        salesReportsActivity = (SalesReportsActivity) getActivity();
+        purchaseReportsActivity = (PurchaseReportsActivity) getActivity();
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
         list = new ArrayList<>();
-        briefSalesReportAdapter = new BriefSalesReportAdapter(getContext(), list);
-        binding.recyclerView.setAdapter(briefSalesReportAdapter);
+        briefPurchaseReportAdapter = new BriefPurchaseReportAdapter(getContext(), list);
+        binding.recyclerView.setAdapter(briefPurchaseReportAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        arrayRequest = new HP.ArrayRequest(getContext(), "reports/sales/briefSalesReport", new HP.ArrayRequest.OnResponseHandler() {
+        arrayRequest = new HP.ArrayRequest(getContext(), "reports/purchase/briefPurchaseReport", new HP.ArrayRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
@@ -64,12 +68,12 @@ public class BriefSalesReportFragment extends Fragment {
 
                     if(response.length() > 0){
                         for(int i = 0; i < response.length(); i++){
-                            BriefSalesReport briefSalesReport = gson.fromJson(response.getJSONObject(i).toString(), BriefSalesReport.class);
-                            list.add(briefSalesReport);
+                            BriefPurchaseReport briefPurchaseReport = gson.fromJson(response.getJSONObject(i).toString(), BriefPurchaseReport.class);
+                            list.add(briefPurchaseReport);
                         }
                     }
 
-                    briefSalesReportAdapter.notifyDataSetChanged();
+                    briefPurchaseReportAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -93,7 +97,7 @@ public class BriefSalesReportFragment extends Fragment {
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
 
-        params.putAll(salesReportsActivity.getDateParams());
+        params.putAll(purchaseReportsActivity.getDateParams());
 
         return params;
     }
@@ -101,7 +105,7 @@ public class BriefSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisibility(false);
+        purchaseReportsActivity.setRadioButtonsVisibility(false);
     }
 
 }

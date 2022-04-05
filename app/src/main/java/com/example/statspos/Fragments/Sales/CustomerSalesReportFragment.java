@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Sales;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,12 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.Sales.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Reports.TotalSalesReport;
-import com.example.statspos.Models.Users;
+import com.example.statspos.Models.Accounts.Customers;
+import com.example.statspos.Models.Reports.Sales.TotalSalesReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByUserSalesReportBinding;
+import com.example.statspos.databinding.FragmentCustomerSalesReportBinding;
 import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
 
@@ -32,25 +32,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserSalesReportFragment extends Fragment {
+public class CustomerSalesReportFragment extends Fragment {
 
-    FragmentByUserSalesReportBinding binding;
+    FragmentCustomerSalesReportBinding binding;
     TotalSalesReportHelperBinding bindingInclude;
 
     TotalSalesReportAdapter totalSalesReportAdapter;
     List<TotalSalesReport> list;
     HP.ObjectRequest objectRequest;
     SalesReportsActivity salesReportsActivity;
-    Users selectedUser = null;
+    Customers selectedCustomer = null;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentByUserSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_user_sales_report, container, false));
+        binding = FragmentCustomerSalesReportBinding.bind(inflater.inflate(R.layout.fragment_customer_sales_report, container, false));
         bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
 
         init();
-//        loadReport();
 
         return binding.getRoot();
     }
@@ -60,7 +59,7 @@ public class UserSalesReportFragment extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
-        loadUsers();
+        loadCustomers();
 
         list = new ArrayList<>();
         totalSalesReportAdapter = new TotalSalesReportAdapter(getContext(), list);
@@ -105,26 +104,26 @@ public class UserSalesReportFragment extends Fragment {
             }
         });
 
-        binding.userInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
+        binding.dropdownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.userTB.showDropDown();
+                binding.customerTB.showDropDown();
             }
         });
 
-        binding.userTB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        binding.customerTB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(b){
-                    binding.userTB.showDropDown();
+                    binding.customerTB.showDropDown();
                 }
             }
         });
 
-        binding.userTB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.customerTB.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedUser = (Users) adapterView.getItemAtPosition(i);
+                selectedCustomer = (Customers) adapterView.getItemAtPosition(i);
                 InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                 loadReport();
@@ -132,21 +131,23 @@ public class UserSalesReportFragment extends Fragment {
         });
     }
 
-    private void loadUsers(){
-        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "users/searchUser", new HP.ObjectRequest.OnResponseHandler() {
+    private void loadCustomers(){
+        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "accounts/searchCustomer", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
-                List<Users> usersList = new ArrayList<>();
+                List<Customers> customersList = new ArrayList<>();
                 try {
                     JSONArray jsonArray = response.getJSONArray("rows");
                     for(int i = 0; i < jsonArray.length(); i++){
-                        Users user = gson.fromJson(jsonArray.getJSONObject(i).toString(), Users.class);
-                        usersList.add(user);
+                        Customers customer = gson.fromJson(jsonArray.getJSONObject(i).toString(), Customers.class);
+                        customersList.add(customer);
                     }
 
-                    ArrayAdapter<Users> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, usersList);
-                    binding.userTB.setAdapter(arrayAdapter);
+                    ArrayAdapter<Customers> arrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, customersList);
+                    binding.customerTB.setAdapter(arrayAdapter);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -159,7 +160,7 @@ public class UserSalesReportFragment extends Fragment {
     }
 
     private void loadReport(){
-        if(selectedUser != null) {
+        if(selectedCustomer != null) {
             progressDialog.show();
             objectRequest.request(getParams());
         }
@@ -169,7 +170,7 @@ public class UserSalesReportFragment extends Fragment {
         Map<String, String> params = new HashMap<>();
 //        params.put("date_from", salesReportsActivity.getDateFrom());
 //        params.put("date_to", salesReportsActivity.getDateTo());
-        params.put("user_id", selectedUser.getId());
+        params.put("customer_id", selectedCustomer.getId());
 
         params.putAll(salesReportsActivity.getDateParams());
         params.putAll(salesReportsActivity.getRBParams());

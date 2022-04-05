@@ -1,25 +1,18 @@
 package com.example.statspos.Adapters;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.statspos.Fragments.BriefSalesReportFragment;
-import com.example.statspos.Fragments.CategorySalesReportFragment;
-import com.example.statspos.Fragments.ChartSalesFragment;
-import com.example.statspos.Fragments.CustomerSalesReportFragment;
-import com.example.statspos.Fragments.ItemSalesReportFragment;
-import com.example.statspos.Fragments.UserSalesReportFragment;
-import com.example.statspos.Fragments.VendorSalesReportFragment;
-import com.example.statspos.Fragments.TotalSalesReportFragment;
-
-import java.util.ArrayList;
+import com.example.statspos.Fragments.Sales.CategorySalesReportFragment;
+import com.example.statspos.Fragments.Sales.ChartSalesFragment;
+import com.example.statspos.Fragments.Sales.CustomerSalesReportFragment;
+import com.example.statspos.Fragments.Sales.ItemSalesReportFragment;
+import com.example.statspos.Fragments.Sales.UserSalesReportFragment;
+import com.example.statspos.Fragments.Sales.VendorSalesReportFragment;
+import com.example.statspos.Fragments.Sales.TotalSalesReportFragment;
 
 public class SalesReportsFragmentAdapter extends FragmentStateAdapter {
 

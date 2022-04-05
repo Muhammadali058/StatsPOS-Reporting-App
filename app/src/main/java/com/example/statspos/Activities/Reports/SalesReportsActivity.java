@@ -3,13 +3,8 @@ package com.example.statspos.Activities.Reports;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.Toast;
 
 import com.example.statspos.Adapters.SalesReportsFragmentAdapter;
 import com.example.statspos.HP;
@@ -17,9 +12,6 @@ import com.example.statspos.databinding.ActivitySalesReportsBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +29,8 @@ public class SalesReportsActivity extends AppCompatActivity {
     }
 
     private void init(){
+        HP.loadSettings(this);
+
         binding.dateFromTB.setText(HP.getTodayDate());
         binding.dateToTB.setText(HP.getTodayDate());
 

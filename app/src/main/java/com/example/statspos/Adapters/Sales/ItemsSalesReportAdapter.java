@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters;
+package com.example.statspos.Adapters.Sales;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.statspos.HP;
-import com.example.statspos.Models.Reports.ItemsSalesReport;
+import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.ItemsSalesReportHolderBinding;
 

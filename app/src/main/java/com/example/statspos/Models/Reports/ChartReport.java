@@ -1,13 +1,13 @@
 package com.example.statspos.Models.Reports;
 
-public class ChartSalesReport {
+public class ChartReport {
     String date, total;
 
-    public ChartSalesReport(){
+    public ChartReport(){
 
     }
 
-    public ChartSalesReport(String date, String total) {
+    public ChartReport(String date, String total) {
         this.date = date;
         this.total = total;
     }

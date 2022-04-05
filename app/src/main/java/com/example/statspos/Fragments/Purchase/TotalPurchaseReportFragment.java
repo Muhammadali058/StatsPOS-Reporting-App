@@ -1,23 +1,26 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Purchase;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.Purchase.TotalPurchaseReportAdapter;
+import com.example.statspos.Adapters.Sales.TotalSalesReportAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.Models.Reports.TotalSalesReport;
+import com.example.statspos.Models.Reports.Purchase.TotalPurchaseReport;
+import com.example.statspos.Models.Reports.Sales.TotalSalesReport;
 import com.example.statspos.R;
+import com.example.statspos.databinding.FragmentTotalPurchaseReportBinding;
 import com.example.statspos.databinding.FragmentTotalSalesReportBinding;
+import com.example.statspos.databinding.TotalPurchaseReportHelperBinding;
 import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
 
@@ -30,40 +33,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TotalSalesReportFragment extends Fragment {
+public class TotalPurchaseReportFragment extends Fragment {
 
-    FragmentTotalSalesReportBinding binding;
-    TotalSalesReportHelperBinding bindingInclude;
+    FragmentTotalPurchaseReportBinding binding;
+    TotalPurchaseReportHelperBinding bindingInclude;
 
-    TotalSalesReportAdapter totalSalesReportAdapter;
-    List<TotalSalesReport> list;
+    TotalPurchaseReportAdapter totalPurchaseReportAdapter;
+    List<TotalPurchaseReport> list;
     HP.ObjectRequest objectRequest;
-    SalesReportsActivity salesReportsActivity;
+    PurchaseReportsActivity purchaseReportsActivity;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentTotalSalesReportBinding.bind(inflater.inflate(R.layout.fragment_total_sales_report, container, false));
-        bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
+        binding = FragmentTotalPurchaseReportBinding.bind(inflater.inflate(R.layout.fragment_total_purchase_report, container, false));
+        bindingInclude = TotalPurchaseReportHelperBinding.bind(binding.getRoot());
 
         init();
-//        loadReport();
 
         return binding.getRoot();
     }
 
     private void init(){
-        salesReportsActivity = (SalesReportsActivity) getActivity();
+        purchaseReportsActivity = (PurchaseReportsActivity) getActivity();
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
         list = new ArrayList<>();
-        totalSalesReportAdapter = new TotalSalesReportAdapter(getContext(), list);
+        totalPurchaseReportAdapter = new TotalPurchaseReportAdapter(getContext(), list);
 
-        bindingInclude.recyclerView.setAdapter(totalSalesReportAdapter);
+        bindingInclude.recyclerView.setAdapter(totalPurchaseReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/totalSalesReport", new HP.ObjectRequest.OnResponseHandler() {
+        objectRequest = new HP.ObjectRequest(getContext(), "reports/purchase/totalPurchaseReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -77,15 +79,15 @@ public class TotalSalesReportFragment extends Fragment {
                         binding.totalBills.setText(total.getString("totalRows"));
 
                         for(int i = 0; i < rows.length(); i++){
-                            TotalSalesReport totalSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalSalesReport.class);
-                            list.add(totalSalesReport);
+                            TotalPurchaseReport totalPurchaseReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalPurchaseReport.class);
+                            list.add(totalPurchaseReport);
                         }
                     }else {
                         binding.grandTotal.setText("0.00");
                         binding.totalBills.setText("0");
                     }
 
-                    totalSalesReportAdapter.notifyDataSetChanged();
+                    totalPurchaseReportAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -108,11 +110,9 @@ public class TotalSalesReportFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-//        params.put("date_from", salesReportsActivity.getDateFrom());
-//        params.put("date_to", salesReportsActivity.getDateTo());
 
-        params.putAll(salesReportsActivity.getDateParams());
-        params.putAll(salesReportsActivity.getRBParams());
+        params.putAll(purchaseReportsActivity.getDateParams());
+        params.putAll(purchaseReportsActivity.getRBParams());
 
         return params;
     }
@@ -120,8 +120,7 @@ public class TotalSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisibility(true);
-//        loadReport();
+        purchaseReportsActivity.setRadioButtonsVisibility(true);
     }
 
 }

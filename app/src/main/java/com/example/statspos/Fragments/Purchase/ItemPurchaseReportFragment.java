@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments;
+package com.example.statspos.Fragments.Purchase;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,14 +13,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.ItemsSalesReportAdapter;
+import com.example.statspos.Adapters.Purchase.ItemsPurchaseReportAdapter;
+import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
-import com.example.statspos.Models.Reports.BriefSalesReport;
-import com.example.statspos.Models.Reports.ItemsSalesReport;
+import com.example.statspos.Models.Reports.Purchase.ItemsPurchaseReport;
+import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentByItemSalesReportBinding;
+import com.example.statspos.databinding.FragmentItemPurchaseReportBinding;
+import com.example.statspos.databinding.FragmentItemSalesReportBinding;
+import com.example.statspos.databinding.ItemsPurchaseReportHelperBinding;
 import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
 import com.google.gson.Gson;
 
@@ -33,23 +37,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemSalesReportFragment extends Fragment {
+public class ItemPurchaseReportFragment extends Fragment {
 
-    FragmentByItemSalesReportBinding binding;
-    ItemsSalesReportHelperBinding bindingInclude;
+    FragmentItemPurchaseReportBinding binding;
+    ItemsPurchaseReportHelperBinding bindingInclude;
 
-    ItemsSalesReportAdapter itemsSalesReportAdapter;
-    List<ItemsSalesReport> list;
+    ItemsPurchaseReportAdapter itemsPurchaseReportAdapter;
+    List<ItemsPurchaseReport> list;
     HP.ArrayRequest getItemObjectRequest;
     HP.ObjectRequest objectRequest;
-    SalesReportsActivity salesReportsActivity;
+    PurchaseReportsActivity purchaseReportsActivity;
     Items selectedItem = null;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentByItemSalesReportBinding.bind(inflater.inflate(R.layout.fragment_by_item_sales_report, container, false));
-        bindingInclude = ItemsSalesReportHelperBinding.bind(binding.getRoot());
+        binding = FragmentItemPurchaseReportBinding.bind(inflater.inflate(R.layout.fragment_item_purchase_report, container, false));
+        bindingInclude = ItemsPurchaseReportHelperBinding.bind(binding.getRoot());
 
         init();
 
@@ -57,16 +61,16 @@ public class ItemSalesReportFragment extends Fragment {
     }
 
     private void init(){
-        salesReportsActivity = (SalesReportsActivity) getActivity();
+        purchaseReportsActivity = (PurchaseReportsActivity) getActivity();
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
         loadItems();
 
         list = new ArrayList<>();
-        itemsSalesReportAdapter = new ItemsSalesReportAdapter(getContext(), list);
+        itemsPurchaseReportAdapter = new ItemsPurchaseReportAdapter(getContext(), list);
 
-        bindingInclude.recyclerView.setAdapter(itemsSalesReportAdapter);
+        bindingInclude.recyclerView.setAdapter(itemsPurchaseReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Request to getItem
@@ -88,7 +92,7 @@ public class ItemSalesReportFragment extends Fragment {
         });
 
         // Report Request
-        objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/itemsSalesReport", new HP.ObjectRequest.OnResponseHandler() {
+        objectRequest = new HP.ObjectRequest(getContext(), "reports/purchase/itemsPurchaseReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -100,34 +104,19 @@ public class ItemSalesReportFragment extends Fragment {
                         JSONObject total = response.getJSONObject("total");
                         binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
 
-                        // When not sale cartons
-                        if(!HP.settings.isSaleCartons()){
-                            bindingInclude.crtnLabel.setVisibility(View.GONE);
-                            bindingInclude.crtnRateLabel.setVisibility(View.GONE);
-
-                            String totalQty = "Pcs = " + total.getString("totalQty");
-                            binding.totalQtyLabel.setText(totalQty);
-                        }else { // When sale cartons
-                            String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
-                            binding.totalQtyLabel.setText(totalQty);
-                        }
+                        String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
+                        binding.totalQtyLabel.setText(totalQty);
 
                         for(int i = 0; i < rows.length(); i++){
-                            ItemsSalesReport itemsSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsSalesReport.class);
-                            list.add(itemsSalesReport);
+                            ItemsPurchaseReport itemsPurchaseReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsPurchaseReport.class);
+                            list.add(itemsPurchaseReport);
                         }
                     }else {
                         binding.grandTotal.setText("0.00");
-
-                        // When not sale cartons
-                        if(!HP.settings.isSaleCartons()){
-                            binding.totalQtyLabel.setText("Pcs = 0");
-                        }else {
-                            binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
-                        }
+                        binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
                     }
 
-                    itemsSalesReportAdapter.notifyDataSetChanged();
+                    itemsPurchaseReportAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -154,7 +143,14 @@ public class ItemSalesReportFragment extends Fragment {
             }
         });
 
-        binding.itemnameInputLayout.setEndIconOnClickListener(new View.OnClickListener() {
+        binding.dropdownBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.itemnameTB.showDropDown();
+            }
+        });
+
+        binding.itemnameTB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.itemnameTB.showDropDown();
@@ -215,13 +211,11 @@ public class ItemSalesReportFragment extends Fragment {
 
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
-//        params.put("date_from", salesReportsActivity.getDateFrom());
-//        params.put("date_to", salesReportsActivity.getDateTo());
         params.put("report_by", "item");
         params.put("id", selectedItem.getId());
 
-        params.putAll(salesReportsActivity.getDateParams());
-        params.putAll(salesReportsActivity.getRBParams());
+        params.putAll(purchaseReportsActivity.getDateParams());
+        params.putAll(purchaseReportsActivity.getRBParams());
 
         return params;
     }
@@ -234,7 +228,7 @@ public class ItemSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisibility(true);
+        purchaseReportsActivity.setRadioButtonsVisibility(true);
     }
 
 }

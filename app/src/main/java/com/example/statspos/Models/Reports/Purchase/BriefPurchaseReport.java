@@ -1,13 +1,12 @@
-package com.example.statspos.Models.Reports;
+package com.example.statspos.Models.Reports.Purchase;
 
-public class BriefSalesReport {
+public class BriefPurchaseReport {
     String date, description, totalBills, grandTotal;
 
-    public BriefSalesReport(){
-
+    public BriefPurchaseReport() {
     }
 
-    public BriefSalesReport(String date, String description, String totalBills, String grandTotal) {
+    public BriefPurchaseReport(String date, String description, String totalBills, String grandTotal) {
         this.date = date;
         this.description = description;
         this.totalBills = totalBills;

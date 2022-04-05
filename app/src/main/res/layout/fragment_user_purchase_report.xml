@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.CustomerSalesReportFragment"
+    tools:context=".Fragments.Purchase.UserPurchaseReportFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,33 +12,41 @@
         android:orientation="horizontal"
         android:layout_marginHorizontal="10dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/customerInputLayout"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:hint="Select Customer"
-            app:endIconDrawable="@drawable/ic_dropdown"
-            app:errorEnabled="true"
-            app:endIconCheckable="true"
-            app:endIconMode="custom"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+            android:background="@drawable/textbox_bg">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/customerTB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:completionThreshold="1"/>
+            <AutoCompleteTextView
+                android:id="@+id/userTB"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select User"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/dropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/refreshBtn"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_marginTop="15dp"
             android:src="@drawable/ic_refresh"
-            android:layout_gravity="top"/>
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -57,7 +64,7 @@
             android:layout_alignParentLeft="true"
             android:text="Total"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/grandTotal"
@@ -66,17 +73,17 @@
             android:layout_alignParentRight="true"
             android:text="0.00"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/totalBilllLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_below="@+id/grandTotalLabel"
+            android:layout_alignParentLeft="true"
             android:text="Bills"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/totalBills"
@@ -86,10 +93,10 @@
             android:layout_below="@+id/grandTotal"
             android:text="0"
             android:textColor="@color/textColor"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
-    <include layout="@layout/total_sales_report_helper"/>
+    <include layout="@layout/total_purchase_report_helper"/>
 
 </LinearLayout>

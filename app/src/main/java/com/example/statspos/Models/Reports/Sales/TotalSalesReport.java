@@ -1,4 +1,4 @@
-package com.example.statspos.Models.Reports;
+package com.example.statspos.Models.Reports.Sales;
 
 public class TotalSalesReport {
     String date, id, customer, total;

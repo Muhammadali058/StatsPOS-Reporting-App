@@ -1,19 +1,18 @@
-package com.example.statspos.Models.Reports;
+package com.example.statspos.Models.Reports.Purchase;
 
-public class ItemsSalesReport {
-    String date, itemname, qty, crtn, rate, crtnRate, disc, total;
+public class ItemsPurchaseReport {
+    String date, itemname, cost, qty, crtn, crtnSize, disc, total;
 
-    public ItemsSalesReport(){
-
+    public ItemsPurchaseReport() {
     }
 
-    public ItemsSalesReport(String date, String itemname, String qty, String crtn, String rate, String crtnRate, String disc, String total) {
+    public ItemsPurchaseReport(String date, String itemname, String cost, String qty, String crtn, String crtnSize, String disc, String total) {
         this.date = date;
         this.itemname = itemname;
+        this.cost = cost;
         this.qty = qty;
         this.crtn = crtn;
-        this.rate = rate;
-        this.crtnRate = crtnRate;
+        this.crtnSize = crtnSize;
         this.disc = disc;
         this.total = total;
     }
@@ -34,6 +33,14 @@ public class ItemsSalesReport {
         this.itemname = itemname;
     }
 
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
     public String getQty() {
         return qty;
     }
@@ -50,20 +57,12 @@ public class ItemsSalesReport {
         this.crtn = crtn;
     }
 
-    public String getRate() {
-        return rate;
+    public String getCrtnSize() {
+        return crtnSize;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
-    public String getCrtnRate() {
-        return crtnRate;
-    }
-
-    public void setCrtnRate(String crtnRate) {
-        this.crtnRate = crtnRate;
+    public void setCrtnSize(String crtnSize) {
+        this.crtnSize = crtnSize;
     }
 
     public String getDisc() {
