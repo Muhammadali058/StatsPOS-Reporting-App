@@ -14,25 +14,7 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/invoiceNo"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="589687548"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="15,005815"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/vendor"
+                android:id="@+id/itemname"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="R.B Traders"
@@ -41,46 +23,37 @@
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
-                android:id="@+id/disc"
+                android:id="@+id/stockPcs"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="25"
+                android:text="15"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
-                android:id="@+id/purchaseOn"
+                android:id="@+id/stockCrtn"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Cash"
+                android:text="5"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
-                android:id="@+id/purchaseType"
+                android:id="@+id/rate"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Purchase"
+                android:text="1556"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
-                android:id="@+id/isMopCashBank"
-                android:layout_width="60dp"
+                android:id="@+id/stockValue"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="Cash"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:text="2022/03/16"
+                android:text="15,005815"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>

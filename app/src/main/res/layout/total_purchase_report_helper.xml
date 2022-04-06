@@ -29,15 +29,6 @@
                     android:textSize="@dimen/headerTextSize" />
 
                 <TextView
-                    android:id="@+id/vendorLabel"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Vendor"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize"/>
-
-                <TextView
                     android:id="@+id/totalLabel"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
@@ -45,6 +36,15 @@
                     android:text="Total"
                     android:textColor="@color/white"
                     android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:id="@+id/vendorLabel"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Vendor"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
 
                 <TextView
                     android:id="@+id/discLabel"

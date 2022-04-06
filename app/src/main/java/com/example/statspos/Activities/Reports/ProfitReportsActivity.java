@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.statspos.Adapters.ProfitReportsFragmentAdapter;
+import com.example.statspos.Adapters.Profit.ProfitReportsFragmentAdapter;
 import com.example.statspos.HP;
-import com.example.statspos.R;
 import com.example.statspos.databinding.ActivityProfitReportsBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;

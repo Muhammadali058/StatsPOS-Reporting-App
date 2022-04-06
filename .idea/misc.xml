@@ -14,6 +14,7 @@
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_purchase_reports.xml" value="0.33" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_reports.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_sales_reports.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/activity_stock_reports.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_profit_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_purchase_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/brief_sales_report_holder.xml" value="0.27291666666666664" />
@@ -28,6 +29,7 @@
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_category_profit_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_category_purchase_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_category_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_category_stock_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_chart_profit.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_chart_purchase.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_chart_purchase_report.xml" value="0.27291666666666664" />
@@ -37,21 +39,26 @@
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_item_profit_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_item_purchase_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_item_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_item_stock_report.xml" value="0.25" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_profit_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_purchase_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_sales_report.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_total_stock_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_user_profit_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_user_purchase_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_user_sales_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_vendor_profit_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_vendor_purchase_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_vendor_sales_report.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/fragment_vendor_stock_report.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_profit_report_helper.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_profit_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_purchase_report_helper.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_purchase_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_sales_report_helper.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/items_sales_report_holder.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/stock_report_helper.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/stock_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_profit_report_helper.xml" value="0.33" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_profit_report_holder.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/HP/Documents/AndroidStudioProjects/StatsPOS/app/src/main/res/layout/total_purchase_report_helper.xml" value="0.27291666666666664" />

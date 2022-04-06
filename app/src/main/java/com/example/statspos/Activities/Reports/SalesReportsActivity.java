@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.statspos.Adapters.SalesReportsFragmentAdapter;
+import com.example.statspos.Adapters.Sales.SalesReportsFragmentAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.databinding.ActivitySalesReportsBinding;
 import com.google.android.material.tabs.TabLayout;
