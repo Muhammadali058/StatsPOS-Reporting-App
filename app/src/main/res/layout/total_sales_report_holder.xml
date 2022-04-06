@@ -14,15 +14,6 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/date"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:text="2022/03/16"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
                 android:id="@+id/invoiceNo"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
@@ -33,19 +24,72 @@
 
             <TextView
                 android:id="@+id/customer"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="R.B Traders"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"
-                android:layout_weight="1"/>
+                android:padding="@dimen/rowPadding"/>
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="15,005815"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/disc"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/salesOn"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Cash"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/salesType"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Sales"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/isMopCashBank"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Cash"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/isRetail"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="R"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="2022/03/16"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>

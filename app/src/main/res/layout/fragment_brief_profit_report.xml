@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:clickable="true"
-    android:background="?attr/selectableItemBackground">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Profit.BriefProfitReportFragment"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/refreshBtn"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:src="@drawable/ic_refresh"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"/>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -20,83 +27,50 @@
             <TableRow android:background="@color/blueLight">
 
                 <TextView
-                    android:id="@+id/invoiceNoLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Inv #"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/customerLabel"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Customer"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize"/>
-
-                <TextView
-                    android:id="@+id/totalLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Total"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/discLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Disc"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/onLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="On"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/typeLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="Type"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/mopLabel"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="M.O.P"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/isRetailLabel"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/headerPadding"
-                    android:text="W/R"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/headerTextSize" />
-
-                <TextView
-                    android:id="@+id/dateLabel"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/headerPadding"
                     android:text="Date"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Description"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Profit"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Margin"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Total Sale"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Bills"
                     android:textColor="@color/white"
                     android:textSize="@dimen/headerTextSize" />
 
@@ -106,9 +80,7 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clickable="true"
-                android:background="?attr/selectableItemBackground"
-                tools:listitem="@layout/total_sales_report_holder" />
+                tools:listitem="@layout/brief_profit_report_holder" />
 
         </TableLayout>
 

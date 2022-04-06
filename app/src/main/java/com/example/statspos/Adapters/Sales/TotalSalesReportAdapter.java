@@ -35,10 +35,15 @@ public class TotalSalesReportAdapter extends RecyclerView.Adapter<TotalSalesRepo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TotalSalesReport totalSalesReport = list.get(position);
 
-        holder.binding.date.setText(totalSalesReport.getDate());
         holder.binding.invoiceNo.setText(totalSalesReport.getId());
         holder.binding.customer.setText(totalSalesReport.getCustomer());
         holder.binding.total.setText(totalSalesReport.getTotal());
+        holder.binding.disc.setText(totalSalesReport.getDisc());
+        holder.binding.salesOn.setText(totalSalesReport.getSalesOn());
+        holder.binding.salesType.setText(totalSalesReport.getSalesType());
+        holder.binding.isMopCashBank.setText(totalSalesReport.getIsMopCashBank());
+        holder.binding.isRetail.setText(totalSalesReport.getIsRetail());
+        holder.binding.date.setText(totalSalesReport.getDate());
     }
 
     @Override

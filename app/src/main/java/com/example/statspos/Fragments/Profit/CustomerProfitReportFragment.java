@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments.Sales;
+package com.example.statspos.Fragments.Profit;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,14 +13,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Sales.TotalSalesReportAdapter;
+import com.example.statspos.Activities.Reports.ProfitReportsActivity;
+import com.example.statspos.Adapters.Profit.TotalProfitReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Accounts.Customers;
-import com.example.statspos.Models.Reports.Sales.TotalSalesReport;
+import com.example.statspos.Models.Reports.Profit.TotalProfitReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentCustomerSalesReportBinding;
-import com.example.statspos.databinding.TotalSalesReportHelperBinding;
+import com.example.statspos.databinding.FragmentCustomerProfitReportBinding;
+import com.example.statspos.databinding.TotalProfitReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -32,22 +32,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CustomerSalesReportFragment extends Fragment {
+public class CustomerProfitReportFragment extends Fragment {
 
-    FragmentCustomerSalesReportBinding binding;
-    TotalSalesReportHelperBinding bindingInclude;
+    FragmentCustomerProfitReportBinding binding;
+    TotalProfitReportHelperBinding bindingInclude;
 
-    TotalSalesReportAdapter totalSalesReportAdapter;
-    List<TotalSalesReport> list;
+    TotalProfitReportAdapter totalProfitReportAdapter;
+    List<TotalProfitReport> list;
     HP.ObjectRequest objectRequest;
-    SalesReportsActivity salesReportsActivity;
+    ProfitReportsActivity profitReportsActivity;
     Customers selectedCustomer = null;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCustomerSalesReportBinding.bind(inflater.inflate(R.layout.fragment_customer_sales_report, container, false));
-        bindingInclude = TotalSalesReportHelperBinding.bind(binding.getRoot());
+        binding = FragmentCustomerProfitReportBinding.bind(inflater.inflate(R.layout.fragment_customer_profit_report, container, false));
+        bindingInclude = TotalProfitReportHelperBinding.bind(binding.getRoot());
 
         init();
 
@@ -55,19 +55,19 @@ public class CustomerSalesReportFragment extends Fragment {
     }
 
     private void init(){
-        salesReportsActivity = (SalesReportsActivity) getActivity();
+        profitReportsActivity = (ProfitReportsActivity) getActivity();
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
         loadCustomers();
 
         list = new ArrayList<>();
-        totalSalesReportAdapter = new TotalSalesReportAdapter(getContext(), list);
+        totalProfitReportAdapter = new TotalProfitReportAdapter(getContext(), list);
 
-        bindingInclude.recyclerView.setAdapter(totalSalesReportAdapter);
+        bindingInclude.recyclerView.setAdapter(totalProfitReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/totalSalesReport", new HP.ObjectRequest.OnResponseHandler() {
+        objectRequest = new HP.ObjectRequest(getContext(), "reports/profit/totalProfitReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -77,19 +77,19 @@ public class CustomerSalesReportFragment extends Fragment {
                     JSONArray rows = response.getJSONArray("rows");
                     if(rows.length() > 0){
                         JSONObject total = response.getJSONObject("total");
-                        binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
-                        binding.totalBills.setText(total.getString("totalRows"));
+                        binding.grandProfit.setText(HP.formatCurrency(total.getString("grandProfit")));
+                        binding.totalMargin.setText(HP.formatCurrency(total.getString("totalMargin")));
 
                         for(int i = 0; i < rows.length(); i++){
-                            TotalSalesReport totalSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalSalesReport.class);
-                            list.add(totalSalesReport);
+                            TotalProfitReport totalProfitReport = gson.fromJson(rows.getJSONObject(i).toString(), TotalProfitReport.class);
+                            list.add(totalProfitReport);
                         }
                     }else {
-                        binding.grandTotal.setText("0.00");
-                        binding.totalBills.setText("0");
+                        binding.grandProfit.setText("0.00");
+                        binding.totalMargin.setText("0.00%");
                     }
 
-                    totalSalesReportAdapter.notifyDataSetChanged();
+                    totalProfitReportAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -170,8 +170,8 @@ public class CustomerSalesReportFragment extends Fragment {
         Map<String, String> params = new HashMap<>();
         params.put("customer_id", selectedCustomer.getId());
 
-        params.putAll(salesReportsActivity.getDateParams());
-        params.putAll(salesReportsActivity.getRBParams());
+        params.putAll(profitReportsActivity.getDateParams());
+        params.putAll(profitReportsActivity.getRBParams());
 
         return params;
     }
@@ -179,7 +179,7 @@ public class CustomerSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisibility(true);
+        profitReportsActivity.setRadioButtonsVisibility(true);
     }
 
 }

@@ -23,15 +23,6 @@
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
-                android:id="@+id/vendor"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="R.B Traders"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
                 android:id="@+id/total"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
@@ -41,37 +32,37 @@
                 android:padding="@dimen/rowPadding"/>
 
             <TextView
+                android:id="@+id/profit"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="15815"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/margin"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="99.99%"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/customer"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="R.B Traders"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
                 android:id="@+id/disc"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="25"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/purchaseOn"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="Cash"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/purchaseType"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="Purchase"
-                android:textSize="@dimen/rowTextSize"
-                android:textColor="@color/textColor"
-                android:padding="@dimen/rowPadding"/>
-
-            <TextView
-                android:id="@+id/isMopCashBank"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="Cash"
+                android:text="105"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>

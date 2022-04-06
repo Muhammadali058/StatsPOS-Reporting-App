@@ -1,4 +1,4 @@
-package com.example.statspos.Fragments.Sales;
+package com.example.statspos.Fragments.Profit;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -13,14 +13,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
+import com.example.statspos.Activities.Reports.ProfitReportsActivity;
+import com.example.statspos.Adapters.Profit.ItemsProfitReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
-import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
+import com.example.statspos.Models.Reports.Profit.ItemsProfitReport;
 import com.example.statspos.R;
-import com.example.statspos.databinding.FragmentItemSalesReportBinding;
-import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
+import com.example.statspos.databinding.FragmentItemProfitReportBinding;
+import com.example.statspos.databinding.ItemsProfitReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -32,23 +32,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemSalesReportFragment extends Fragment {
+public class ItemProfitReportFragment extends Fragment {
 
-    FragmentItemSalesReportBinding binding;
-    ItemsSalesReportHelperBinding bindingInclude;
+    FragmentItemProfitReportBinding binding;
+    ItemsProfitReportHelperBinding bindingInclude;
 
-    ItemsSalesReportAdapter itemsSalesReportAdapter;
-    List<ItemsSalesReport> list;
+    ItemsProfitReportAdapter itemsProfitReportAdapter;
+    List<ItemsProfitReport> list;
     HP.ArrayRequest getItemObjectRequest;
     HP.ObjectRequest objectRequest;
-    SalesReportsActivity salesReportsActivity;
+    ProfitReportsActivity profitReportsActivity;
     Items selectedItem = null;
     ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentItemSalesReportBinding.bind(inflater.inflate(R.layout.fragment_item_sales_report, container, false));
-        bindingInclude = ItemsSalesReportHelperBinding.bind(binding.getRoot());
+        binding = FragmentItemProfitReportBinding.bind(inflater.inflate(R.layout.fragment_item_profit_report, container, false));
+        bindingInclude = ItemsProfitReportHelperBinding.bind(binding.getRoot());
 
         init();
 
@@ -56,16 +56,16 @@ public class ItemSalesReportFragment extends Fragment {
     }
 
     private void init(){
-        salesReportsActivity = (SalesReportsActivity) getActivity();
+        profitReportsActivity = (ProfitReportsActivity) getActivity();
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");
 
         loadItems();
 
         list = new ArrayList<>();
-        itemsSalesReportAdapter = new ItemsSalesReportAdapter(getContext(), list);
+        itemsProfitReportAdapter = new ItemsProfitReportAdapter(getContext(), list);
 
-        bindingInclude.recyclerView.setAdapter(itemsSalesReportAdapter);
+        bindingInclude.recyclerView.setAdapter(itemsProfitReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Request to getItem
@@ -87,7 +87,7 @@ public class ItemSalesReportFragment extends Fragment {
         });
 
         // Report Request
-        objectRequest = new HP.ObjectRequest(getContext(), "reports/sales/itemsSalesReport", new HP.ObjectRequest.OnResponseHandler() {
+        objectRequest = new HP.ObjectRequest(getContext(), "reports/profit/itemsProfitReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -97,39 +97,29 @@ public class ItemSalesReportFragment extends Fragment {
                     JSONArray rows = response.getJSONArray("rows");
                     if(rows.length() > 0){
                         JSONObject total = response.getJSONObject("total");
-                        binding.grandTotal.setText(HP.formatCurrency(total.getString("grandTotal")));
+                        binding.grandProfit.setText(HP.formatCurrency(total.getString("grandProfit")));
+                        binding.totalMargin.setText(HP.formatCurrency(total.getString("totalMargin")));
 
                         // When not sale cartons
                         if(!HP.settings.isSaleCartons()){
                             bindingInclude.crtnLabel.setVisibility(View.GONE);
-                            bindingInclude.crtnRateLabel.setVisibility(View.GONE);
-
-                            String totalQty = "Pcs = " + total.getString("totalQty");
-                            binding.totalQtyLabel.setText(totalQty);
-                        }else { // When sale cartons
-                            String totalQty = "Pcs = " + total.getString("totalQty") + ", Crtn = " + total.getString("totalCrtn");
-                            binding.totalQtyLabel.setText(totalQty);
                         }
 
                         for(int i = 0; i < rows.length(); i++){
-                            ItemsSalesReport itemsSalesReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsSalesReport.class);
-                            list.add(itemsSalesReport);
+                            ItemsProfitReport itemsProfitReport = gson.fromJson(rows.getJSONObject(i).toString(), ItemsProfitReport.class);
+                            list.add(itemsProfitReport);
                         }
                     }else {
-                        binding.grandTotal.setText("0.00");
+                        binding.grandProfit.setText("0.00");
+                        binding.totalMargin.setText("0.00%");
 
                         // When not sale cartons
                         if(!HP.settings.isSaleCartons()){
                             bindingInclude.crtnLabel.setVisibility(View.GONE);
-                            bindingInclude.crtnRateLabel.setVisibility(View.GONE);
-
-                            binding.totalQtyLabel.setText("Pcs = 0");
-                        }else {
-                            binding.totalQtyLabel.setText("Pcs = 0, Crtn = 0");
                         }
                     }
 
-                    itemsSalesReportAdapter.notifyDataSetChanged();
+                    itemsProfitReportAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -227,8 +217,8 @@ public class ItemSalesReportFragment extends Fragment {
         params.put("report_by", "item");
         params.put("id", selectedItem.getId());
 
-        params.putAll(salesReportsActivity.getDateParams());
-        params.putAll(salesReportsActivity.getRBParams());
+        params.putAll(profitReportsActivity.getDateParams());
+        params.putAll(profitReportsActivity.getRBParams());
 
         return params;
     }
@@ -241,7 +231,7 @@ public class ItemSalesReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        salesReportsActivity.setRadioButtonsVisibility(true);
+        profitReportsActivity.setRadioButtonsVisibility(true);
     }
 
 }

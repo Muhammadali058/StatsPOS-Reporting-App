@@ -34,10 +34,14 @@ public class TotalPurchaseReportAdapter extends RecyclerView.Adapter<TotalPurcha
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TotalPurchaseReport totalPurchaseReport = list.get(position);
 
-        holder.binding.date.setText(totalPurchaseReport.getDate());
         holder.binding.invoiceNo.setText(totalPurchaseReport.getId());
-        holder.binding.customer.setText(totalPurchaseReport.getVendor());
+        holder.binding.vendor.setText(totalPurchaseReport.getVendor());
         holder.binding.total.setText(totalPurchaseReport.getTotal());
+        holder.binding.disc.setText(totalPurchaseReport.getDisc());
+        holder.binding.purchaseOn.setText(totalPurchaseReport.getPurchaseOn());
+        holder.binding.purchaseType.setText(totalPurchaseReport.getPurchaseType());
+        holder.binding.isMopCashBank.setText(totalPurchaseReport.getIsMopCashBank());
+        holder.binding.date.setText(totalPurchaseReport.getDate());
     }
 
     @Override

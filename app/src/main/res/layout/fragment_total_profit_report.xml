@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Profit.TotalProfitReportFragment"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/refreshBtn"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:src="@drawable/ic_refresh"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/grandProfitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Total Profit"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/grandProfit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/totalMarginLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/grandProfitLabel"
+            android:text="Total Margin"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/totalMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/grandProfit"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/total_profit_report_helper"/>
+
+</LinearLayout>
