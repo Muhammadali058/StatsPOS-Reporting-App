@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.statspos.Activities.Reports.AccountReportsActivity;
 import com.example.statspos.Activities.Reports.ProfitReportsActivity;
 import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
@@ -54,6 +55,14 @@ public class ReportsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReportsActivity.this, StockReportsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.accountsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportsActivity.this, AccountReportsActivity.class);
                 startActivity(intent);
             }
         });

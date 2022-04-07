@@ -13,30 +13,43 @@
         android:theme="@style/Theme.StatsPOS"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activities.Reports.StockReportsActivity"
+            android:name=".Activities.Reports.AccountReportsActivity"
             android:exported="true" >
-
-        </activity>
-        <activity
-            android:name=".Activities.Reports.ProfitReportsActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".Activities.ReportsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activities.Reports.PurchaseReportsActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".Activities.Reports.SalesReportsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activities.MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.Reports.StockReportsActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Activities.Reports.ProfitReportsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.ReportsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.Reports.PurchaseReportsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.Reports.SalesReportsActivity"
+            android:exported="true" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

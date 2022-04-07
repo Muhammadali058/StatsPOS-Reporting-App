@@ -41,7 +41,6 @@
                 android:drawableEnd="@drawable/ic_date"
                 android:padding="5dp"
                 android:textSize="12sp"
-                android:layout_marginRight="10dp"
                 android:clickable="false"
                 android:focusable="false"/>
 
