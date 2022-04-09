@@ -30,6 +30,7 @@
                 android:background="@drawable/textbox_bg"
                 android:padding="5dp"
                 android:textSize="12sp"
+                android:completionThreshold="1"
                 android:layout_marginRight="10dp"/>
 
             <ImageView

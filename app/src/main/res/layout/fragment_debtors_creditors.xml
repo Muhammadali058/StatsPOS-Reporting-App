@@ -6,4 +6,114 @@
     tools:context=".Fragments.Accounts.DebtorsCreditorsFragment"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/dateTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:textColor="@color/textColor"
+        android:background="@drawable/textbox_bg"
+        android:drawableEnd="@drawable/ic_date"
+        android:padding="5dp"
+        android:textSize="12sp"
+        android:layout_marginHorizontal="10dp"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/debtorsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Debtors"
+            android:textSize="12sp"
+            android:background="@drawable/button_bg"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/creditorsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Creditors"
+            android:textSize="12sp"
+            android:background="@drawable/button_bg"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Total"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/grandTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TableRow android:background="@color/blueLight">
+
+            <TextView
+                android:id="@+id/detailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Accounts"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/amountLabel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            tools:listitem="@layout/debtors_creditors_report_holder" />
+
+    </TableLayout>
+
 </LinearLayout>

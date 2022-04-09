@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="2022/03/16"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/naration"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Sales to Waqee Haidar on Credit (Invoice No: 12580)"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/debit"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="58948"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/credit"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="5815"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="5815"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

@@ -6,4 +6,134 @@
     tools:context=".Fragments.Accounts.ExpenseReportFragment"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/textbox_bg">
+
+            <AutoCompleteTextView
+                android:id="@+id/expenseTB"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Expense"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:completionThreshold="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:id="@+id/expenseDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/expenseRefreshBtn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_refresh"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/textbox_bg">
+
+            <AutoCompleteTextView
+                android:id="@+id/subExpenseTB"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Sub-Expense"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:completionThreshold="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:id="@+id/subExpenseDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/subExpenseRefreshBtn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_refresh"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/totalExpenseReportBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:textAllCaps="false"
+        android:text="Total Expenses"
+        android:textSize="12sp"
+        android:background="@drawable/button_bg"
+        android:layout_marginHorizontal="10dp"
+        android:layout_gravity="center"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Total"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/grandTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/receipts_payment_report_helper"/>
+
 </LinearLayout>

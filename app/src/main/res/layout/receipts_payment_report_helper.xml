@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TableRow android:background="@color/blueLight">
+
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+            <TextView
+                android:id="@+id/detailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Details"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/amountLabel"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            tools:listitem="@layout/receipts_payment_report_holder" />
+
+    </TableLayout>
+
+</LinearLayout>

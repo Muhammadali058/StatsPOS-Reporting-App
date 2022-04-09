@@ -6,4 +6,123 @@
     tools:context=".Fragments.Accounts.LedgerReportFragment"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/textbox_bg">
+
+            <AutoCompleteTextView
+                android:id="@+id/customerTB"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Customer"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:completionThreshold="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:id="@+id/customerDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/customerRefreshBtn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_refresh"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/textbox_bg">
+
+            <AutoCompleteTextView
+                android:id="@+id/vendorTB"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Select Vendor"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:completionThreshold="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:id="@+id/vendorDropdownBtn"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_dropdown"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/vendorRefreshBtn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_refresh"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Balance"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/newBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/ledger_report_helper"/>
+
 </LinearLayout>

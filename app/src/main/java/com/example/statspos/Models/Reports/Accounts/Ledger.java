@@ -1,12 +1,12 @@
-package com.example.statspos.Models.Accounts;
+package com.example.statspos.Models.Reports.Accounts;
 
-public class Journal {
+public class Ledger {
     String date, naration, debit, credit, oldBalance, newBalance, balance;
 
-    public Journal() {
+    public Ledger() {
     }
 
-    public Journal(String date, String naration, String debit, String credit, String oldBalance, String newBalance, String balance) {
+    public Ledger(String date, String naration, String debit, String credit, String oldBalance, String newBalance, String balance) {
         this.date = date;
         this.naration = naration;
         this.debit = debit;

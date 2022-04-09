@@ -72,17 +72,6 @@ public class AccountReportsActivity extends AppCompatActivity {
         });
         tabLayoutMediator.attach();
 
-        binding.paramsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(binding.advanceLayout.getVisibility() == View.GONE){
-                    binding.advanceLayout.setVisibility(View.VISIBLE);
-                }else {
-                    binding.advanceLayout.setVisibility(View.GONE);
-                }
-            }
-        });
-
         binding.dateFromTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
             @Override
             public void onDateSet(String date) {
@@ -107,41 +96,11 @@ public class AccountReportsActivity extends AppCompatActivity {
         return params;
     }
 
-    public Map<String, String> getRBParams(){
-        Map<String, String> params = new HashMap<>();
-
-        if(binding.typeRetailRB.isChecked()){
-            params.put("is_retail", "1");
-        }else if(binding.typeWholesaleRB.isChecked()){
-            params.put("is_retail", "0");
-        }
-
-        if(binding.salesOnCashRB.isChecked()){
-            params.put("sales_on", "1");
-        }else if(binding.salesOnCreditRB.isChecked()){
-            params.put("sales_on", "2");
-        }
-
-        if(binding.salesTypeSalesRB.isChecked()){
-            params.put("sales_type", "1");
-        }else if(binding.salesTypeReturnRB.isChecked()){
-            params.put("sales_type", "2");
-        }
-
-        if(binding.mopCashRB.isChecked()){
-            params.put("is_mop_cash_bank", "1");
-        }else if(binding.mopBankRB.isChecked()){
-            params.put("is_mop_cash_bank", "0");
-        }
-
-        return params;
-    }
-
-    public void setRadioButtonsVisibility(boolean visible){
+    public void setDateLayoutVisibility(boolean visible){
         if(visible)
-            binding.paramsBtn.setVisibility(View.VISIBLE);
+            binding.dateLayout.setVisibility(View.VISIBLE);
         else
-            binding.paramsBtn.setVisibility(View.GONE);
+            binding.dateLayout.setVisibility(View.GONE);
     }
 
 }

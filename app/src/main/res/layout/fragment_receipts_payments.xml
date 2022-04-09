@@ -6,4 +6,63 @@
     tools:context=".Fragments.Accounts.ReceiptsPaymentsFragment"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/receiptsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Receipts"
+            android:textSize="12sp"
+            android:background="@drawable/button_bg"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/paymentsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Payments"
+            android:textSize="12sp"
+            android:background="@drawable/button_bg"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Total"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/grandTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/receipts_payment_report_helper"/>
+
 </LinearLayout>

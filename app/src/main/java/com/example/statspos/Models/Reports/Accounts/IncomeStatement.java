@@ -1,4 +1,4 @@
-package com.example.statspos.Models.Accounts;
+package com.example.statspos.Models.Reports.Accounts;
 
 public class IncomeStatement {
     String naration, expense, sales, cgs, grossProfit, totalExpenses, netProfit;
