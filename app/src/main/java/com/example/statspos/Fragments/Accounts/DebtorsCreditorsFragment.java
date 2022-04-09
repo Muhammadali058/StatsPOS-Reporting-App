@@ -6,20 +6,16 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.AccountReportsActivity;
-import com.example.statspos.Adapters.Accounts.DebtorsCreditorsReportAdapter;
+import com.example.statspos.Adapters.Accounts.DebtorsCreditorsAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Accounts.DebtorsCreditors;
-import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentDebtorsCreditorsBinding;
-import com.example.statspos.databinding.FragmentReceiptsPaymentsBinding;
-import com.example.statspos.databinding.ReceiptsPaymentReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -35,7 +31,7 @@ public class DebtorsCreditorsFragment extends Fragment {
 
     FragmentDebtorsCreditorsBinding binding;
 
-    DebtorsCreditorsReportAdapter debtorsCreditorsReportAdapter;
+    DebtorsCreditorsAdapter debtorsCreditorsAdapter;
     List<DebtorsCreditors> list;
     HP.ObjectRequest debtorsObjectRequest;
     HP.ObjectRequest creditorsObjectRequest;
@@ -59,7 +55,9 @@ public class DebtorsCreditorsFragment extends Fragment {
         progressDialog.setMessage("Loading...");
 
         list = new ArrayList<>();
-        debtorsCreditorsReportAdapter = new DebtorsCreditorsReportAdapter(getContext(), list);
+        debtorsCreditorsAdapter = new DebtorsCreditorsAdapter(getContext(), list);
+
+        binding.recyclerView.setAdapter(debtorsCreditorsAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         debtorsObjectRequest = new HP.ObjectRequest(getContext(), "reports/accounts/debtors", new HP.ObjectRequest.OnResponseHandler() {
@@ -82,7 +80,7 @@ public class DebtorsCreditorsFragment extends Fragment {
                         binding.grandTotal.setText("0.00");
                     }
 
-                    debtorsCreditorsReportAdapter.notifyDataSetChanged();
+                    debtorsCreditorsAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -110,7 +108,7 @@ public class DebtorsCreditorsFragment extends Fragment {
                         binding.grandTotal.setText("0.00");
                     }
 
-                    debtorsCreditorsReportAdapter.notifyDataSetChanged();
+                    debtorsCreditorsAdapter.notifyDataSetChanged();
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -153,6 +151,7 @@ public class DebtorsCreditorsFragment extends Fragment {
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
         params.put("date", HP.reverseDate(binding.dateTB.getText().toString()));
+
         params.putAll(accountReportsActivity.getDateParams());
 
         return params;

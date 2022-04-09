@@ -85,14 +85,18 @@ public class CashAccountFragment extends Fragment {
                         binding.newBalance.setText(HP.formatCurrency(String.valueOf(newBalance))  + " " + drOrCr);
 
                         long oldBalance = Long.valueOf(ledger.getOldBalance());
-                        if(oldBalance > 0)
+                        if(oldBalance > 0) {
                             binding.oldDebit.setText(String.valueOf(oldBalance));
+                            binding.oldCredit.setText("0");
+                        }
                         else if(oldBalance == 0) {
                             binding.oldDebit.setText("0");
                             binding.oldCredit.setText("0");
                         }
-                        else
+                        else {
+                            binding.oldDebit.setText("0");
                             binding.oldCredit.setText(String.valueOf(oldBalance));
+                        }
 
                         binding.oldBalanceLayout.setVisibility(View.VISIBLE);
                     }else {

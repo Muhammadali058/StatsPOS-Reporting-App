@@ -49,7 +49,7 @@ public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapte
         else
             drOrCr = "Dr";
 
-        holder.binding.balance.setText(balance + " " + drOrCr);
+        holder.binding.balance.setText(Math.abs(balance) + " " + drOrCr);
     }
 
     @Override

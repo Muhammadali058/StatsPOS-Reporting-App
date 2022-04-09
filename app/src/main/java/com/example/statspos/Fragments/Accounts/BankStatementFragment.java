@@ -92,17 +92,21 @@ public class BankStatementFragment extends Fragment {
                         else
                             drOrCr = "Dr";
 
-                        binding.newBalance.setText(HP.formatCurrency(String.valueOf(newBalance))  + " " + drOrCr);
+                        binding.newBalance.setText(HP.formatCurrency(String.valueOf(Math.abs(newBalance)))  + " " + drOrCr);
 
                         long oldBalance = Long.valueOf(ledger.getOldBalance());
-                        if(oldBalance > 0)
+                        if(oldBalance > 0) {
                             bindingInclude.oldDebit.setText(String.valueOf(oldBalance));
+                            bindingInclude.oldCredit.setText("0");
+                        }
                         else if(oldBalance == 0) {
                             bindingInclude.oldDebit.setText("0");
                             bindingInclude.oldCredit.setText("0");
                         }
-                        else
-                            bindingInclude.oldCredit.setText(String.valueOf(oldBalance));
+                        else {
+                            bindingInclude.oldDebit.setText("0");
+                            bindingInclude.oldCredit.setText(String.valueOf(Math.abs(oldBalance)));
+                        }
 
                         bindingInclude.oldBalanceLayout.setVisibility(View.VISIBLE);
                     }else {

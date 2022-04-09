@@ -12,14 +12,6 @@ import com.example.statspos.Fragments.Accounts.ExpenseReportFragment;
 import com.example.statspos.Fragments.Accounts.JournalReportFragment;
 import com.example.statspos.Fragments.Accounts.LedgerReportFragment;
 import com.example.statspos.Fragments.Accounts.ReceiptsPaymentsFragment;
-import com.example.statspos.Fragments.BriefSalesReportFragment;
-import com.example.statspos.Fragments.Sales.CategorySalesReportFragment;
-import com.example.statspos.Fragments.Sales.ChartSalesFragment;
-import com.example.statspos.Fragments.Sales.CustomerSalesReportFragment;
-import com.example.statspos.Fragments.Sales.ItemSalesReportFragment;
-import com.example.statspos.Fragments.Sales.TotalSalesReportFragment;
-import com.example.statspos.Fragments.Sales.UserSalesReportFragment;
-import com.example.statspos.Fragments.Sales.VendorSalesReportFragment;
 
 public class AccountReportsFragmentAdapter extends FragmentStateAdapter {
 

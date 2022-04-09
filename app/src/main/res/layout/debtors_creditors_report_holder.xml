@@ -17,7 +17,7 @@
                 android:id="@+id/accountName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sales to Waqee Haidar on Credit (Invoice No: 12580)"
+                android:text="R.B Traders"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"
@@ -27,7 +27,7 @@
                 android:id="@+id/balance"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="58948"
+                android:text="251520"
                 android:textSize="@dimen/rowTextSize"
                 android:textColor="@color/textColor"
                 android:padding="@dimen/rowPadding"/>

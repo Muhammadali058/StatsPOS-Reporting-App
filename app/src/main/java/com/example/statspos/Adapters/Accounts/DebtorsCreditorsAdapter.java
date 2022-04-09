@@ -9,19 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.statspos.Models.Reports.Accounts.DebtorsCreditors;
-import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
 import com.example.statspos.databinding.DebtorsCreditorsReportHolderBinding;
-import com.example.statspos.databinding.ReceiptsPaymentReportHolderBinding;
 
 import java.util.List;
 
-public class DebtorsCreditorsReportAdapter extends RecyclerView.Adapter<DebtorsCreditorsReportAdapter.ViewHolder> {
+public class DebtorsCreditorsAdapter extends RecyclerView.Adapter<DebtorsCreditorsAdapter.ViewHolder> {
 
     Context context;
     List<DebtorsCreditors> list;
 
-    public DebtorsCreditorsReportAdapter(Context context, List<DebtorsCreditors> list) {
+    public DebtorsCreditorsAdapter(Context context, List<DebtorsCreditors> list) {
         this.context = context;
         this.list = list;
     }
