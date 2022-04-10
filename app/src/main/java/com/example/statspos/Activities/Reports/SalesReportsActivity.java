@@ -29,8 +29,6 @@ public class SalesReportsActivity extends AppCompatActivity {
     }
 
     private void init(){
-        HP.loadSettings(this);
-
         binding.dateFromTB.setText(HP.getTodayDate());
         binding.dateToTB.setText(HP.getTodayDate());
 

@@ -3,21 +3,17 @@ package com.example.statspos.Models.Items;
 import androidx.annotation.NonNull;
 
 public class Items {
-    String id, itemname;
+    int id;
+    String itemname;
 
     public Items() {
     }
 
-    public Items(String id, String itemname) {
-        this.id = id;
-        this.itemname = itemname;
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

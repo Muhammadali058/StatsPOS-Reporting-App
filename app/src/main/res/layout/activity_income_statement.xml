@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Reports.IncomeStatementActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/dateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <!--        Date -->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/dateFromTB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Date From"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:drawableEnd="@drawable/ic_date"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:clickable="false"
+                android:focusable="false"/>
+
+            <EditText
+                android:id="@+id/dateToTB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Date To"
+                android:textColor="@color/textColor"
+                android:background="@drawable/textbox_bg"
+                android:drawableEnd="@drawable/ic_date"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:clickable="false"
+                android:focusable="false"/>
+
+            <ImageView
+                android:id="@+id/refreshBtn"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/ic_refresh"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/netProfitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Net Profit"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/netProfit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="0.00"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TableRow android:background="@color/blueLight">
+
+            <TextView
+                android:id="@+id/detailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Details"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/amount1Label"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+            <TextView
+                android:id="@+id/amount2Label"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/headerPadding"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sales"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/sales"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Less: Cost of goods sold"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/cgs"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"
+                android:layout_weight="1"/>
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"
+                android:background="@drawable/line_bg"/>
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/grossProfitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gross Profit"
+                android:textStyle="bold"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:id="@+id/grossProfit"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expenses"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            tools:listitem="@layout/income_statement_holder"/>
+
+        <TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"
+                android:layout_weight="1"/>
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"
+                android:background="@drawable/line_bg"/>
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="1dp"
+                android:textColor="@color/textColor"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Expenses"
+                android:textStyle="bold"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/totalExpenses"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/rowTextSize"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/rowPadding"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

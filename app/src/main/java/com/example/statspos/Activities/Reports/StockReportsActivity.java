@@ -29,8 +29,6 @@ public class StockReportsActivity extends AppCompatActivity {
     }
 
     private void init(){
-        HP.loadSettings(this);
-
         binding.dateTB.setText(HP.getTodayDate());
 
         stockReportsFragmentAdapter = new StockReportsFragmentAdapter(this);
