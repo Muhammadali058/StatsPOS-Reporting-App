@@ -116,7 +116,7 @@ public class DebtorsCreditorsFragment extends Fragment {
             }
         });
 
-        binding.dateTB.setOnClickListener(new HP.OnDateClickListener(getContext(), new HP.OnDateSet() {
+        binding.dateTB.setOnClickListener(new HP.OnDateClickListener(getContext(), new HP.OnDateClickListener.OnDateSet() {
             @Override
             public void onDateSet(String date) {
                 binding.dateTB.setText(date);

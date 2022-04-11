@@ -81,14 +81,14 @@ public class ProfitReportsActivity extends AppCompatActivity {
             }
         });
 
-        binding.dateFromTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
+        binding.dateFromTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateClickListener.OnDateSet() {
             @Override
             public void onDateSet(String date) {
                 binding.dateFromTB.setText(date);
             }
         }));
 
-        binding.dateToTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
+        binding.dateToTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateClickListener.OnDateSet() {
             @Override
             public void onDateSet(String date) {
                 binding.dateToTB.setText(date);

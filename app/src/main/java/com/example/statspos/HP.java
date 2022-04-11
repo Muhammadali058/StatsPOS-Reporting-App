@@ -6,17 +6,20 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.view.textclassifier.TextSelection;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Models.Settings;
@@ -26,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -164,8 +168,74 @@ public class HP {
 
             requestQueue.add(jsonArrayRequest);
         }
+
         public interface OnResponseHandler{
             void onResponse(JSONArray response);
+        }
+    }
+
+    public static class PostRequest {
+        Context context;
+        String url;
+        OnResponseHandler onResponseHandler;
+
+        public PostRequest(Context context, String url, OnResponseHandler onResponseHandler) {
+            this.context = context;
+            this.url = api + url;
+            this.onResponseHandler = onResponseHandler;
+        }
+
+        public void request(JSONObject jsonObject){
+            try {
+                jsonObject.put("b_code", b_code);
+                jsonObject.put("s_no", b_code);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+//                    Log.i("Response = ", response.toString());
+                    onResponseHandler.onResponse(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+//                    Log.i("Error = ", error.toString());
+                    Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+                }
+            }){
+                @Override
+                public Map<String, String> getHeaders(){
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("Content-Type","application/json");
+                    return params;
+                }
+
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+
+                @Override
+                public byte[] getBody(){
+                    try {
+                        return jsonObject.toString().getBytes("utf-8");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        return  null;
+                    }
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        }
+
+        public interface OnResponseHandler{
+            void onResponse(String response);
         }
     }
 
@@ -212,10 +282,11 @@ public class HP {
 //                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             datePickerDialog.show();
         }
-    }
 
-    public interface OnDateSet{
-        void onDateSet(String date);
+        public interface OnDateSet{
+            void onDateSet(String date);
+        }
+
     }
 
     public static String reverseDate(String date){

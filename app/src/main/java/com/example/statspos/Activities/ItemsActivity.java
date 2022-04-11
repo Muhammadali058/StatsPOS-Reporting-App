@@ -1,24 +1,18 @@
 package com.example.statspos.Activities;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.statspos.Adapters.Items.ItemsAdapter;
-import com.example.statspos.Adapters.Reports.Sales.ItemsSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
-import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
-import com.example.statspos.R;
 import com.example.statspos.databinding.ActivityItemsBinding;
 import com.google.gson.Gson;
 
@@ -36,6 +30,7 @@ public class ItemsActivity extends AppCompatActivity {
     ActivityItemsBinding  binding;
     HP.ArrayRequest getItemArrayRequest;
     HP.ArrayRequest searchItemsArrayRequest;
+    HP.PostRequest insertTempPostRequest;
     ItemsAdapter itemsAdapter;
     List<Items> list;
     Items selectedItem = null;
@@ -67,6 +62,11 @@ public class ItemsActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(itemsAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        initRequests();
+        initOnClickListeners();
+    }
+
+    private void initRequests(){
         // Request to getItem
         getItemArrayRequest = new HP.ArrayRequest(this, "items/getItem", new HP.ArrayRequest.OnResponseHandler() {
             @Override
@@ -109,6 +109,18 @@ public class ItemsActivity extends AppCompatActivity {
             }
         });
 
+        // Request to insert temp data
+        insertTempPostRequest = new HP.PostRequest(this, "temp/insertTemp", new HP.PostRequest.OnResponseHandler() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                clearData();
+            }
+        });
+
+    }
+
+    private void initOnClickListeners(){
         // BarcodeTB click listener
         binding.barcodeTbLayout.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +150,18 @@ public class ItemsActivity extends AppCompatActivity {
         binding.saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDialog.show();
 
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("table_name", "Items");
+                    jsonObject.put("data", new Gson().toJson(getData()));
+                    jsonObject.put("action", "update");
+
+                    insertTempPostRequest.request(jsonObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -146,7 +169,6 @@ public class ItemsActivity extends AppCompatActivity {
         binding.cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedItem = null;
                 clearData();
             }
         });
@@ -207,7 +229,23 @@ public class ItemsActivity extends AppCompatActivity {
         binding.crtnRateTB.setText(String.valueOf(selectedItem.getCrtn_rate()));
     }
 
+    private Items getData(){
+        Items item = new Items();
+
+        item.setId(selectedItem.getId());
+        item.setItemname(binding.itemnameTB.getText().toString());
+        item.setRef_code(binding.refCodeTB.getText().toString());
+        item.setCost(Float.valueOf(binding.costTB.getText().toString()));
+        item.setRetail(Float.valueOf(binding.retailTB.getText().toString()));
+        item.setW_sale(Float.valueOf(binding.wSaleTB.getText().toString()));
+        item.setCrtn_rate(Float.valueOf(binding.crtnRateTB.getText().toString()));
+
+        return item;
+    }
+
     private void clearData(){
+        selectedItem = null;
+
         binding.barcodeTB.setText("");
         binding.refCodeTB.setText("");
         binding.itemnameTB.setText("");
@@ -215,6 +253,8 @@ public class ItemsActivity extends AppCompatActivity {
         binding.retailTB.setText("");
         binding.wSaleTB.setText("");
         binding.crtnRateTB.setText("");
+
+        binding.barcodeTB.requestFocus();
     }
 
     private void hideKeyboard(){

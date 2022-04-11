@@ -68,7 +68,7 @@ public class StockReportsActivity extends AppCompatActivity {
             }
         });
 
-        binding.dateTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateSet() {
+        binding.dateTB.setOnClickListener(new HP.OnDateClickListener(this, new HP.OnDateClickListener.OnDateSet() {
             @Override
             public void onDateSet(String date) {
                 binding.dateTB.setText(date);
