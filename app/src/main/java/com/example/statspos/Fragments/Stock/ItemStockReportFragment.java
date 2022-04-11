@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.StockReportsActivity;
-import com.example.statspos.Adapters.Stock.StockReportAdapter;
+import com.example.statspos.Adapters.Reports.Stock.StockReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
 import com.example.statspos.Models.Reports.StockReport;
@@ -39,6 +39,7 @@ public class ItemStockReportFragment extends Fragment {
 
     StockReportAdapter stockReportAdapter;
     List<StockReport> list;
+    HP.ArrayRequest getItemArrayRequest;
     HP.ObjectRequest objectRequest;
     StockReportsActivity stockReportsActivity;
     Items selectedItem = null;
@@ -67,6 +68,25 @@ public class ItemStockReportFragment extends Fragment {
         bindingInclude.recyclerView.setAdapter(stockReportAdapter);
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Request to getItem
+        getItemArrayRequest = new HP.ArrayRequest(getContext(), "items/getItem", new HP.ArrayRequest.OnResponseHandler() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    if(response.length() > 0){
+                        Gson gson = new Gson();
+                        selectedItem = gson.fromJson(response.getJSONObject(0).toString(), Items.class);
+                        binding.itemnameTB.setText(selectedItem.getItemname());
+                        hideKeyboard();
+                        loadReport();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Report Request
         objectRequest = new HP.ObjectRequest(getContext(), "reports/stock/itemsStockReport", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
@@ -91,6 +111,18 @@ public class ItemStockReportFragment extends Fragment {
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }
+            }
+        });
+
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = binding.itemnameTB.getText().toString();
+                if(text != "") {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("text", text);
+                    getItemArrayRequest.request(params);
                 }
             }
         });
@@ -129,15 +161,14 @@ public class ItemStockReportFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = (Items) adapterView.getItemAtPosition(i);
-                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                hideKeyboard();
                 loadReport();
             }
         });
     }
 
     private void loadItems(){
-        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "items/searchItem", new HP.ObjectRequest.OnResponseHandler() {
+        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "items/loadItems", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
@@ -158,7 +189,6 @@ public class ItemStockReportFragment extends Fragment {
         });
 
         Map<String, String> params2 = new HashMap<>();
-        params2.put("text", "");
         objectRequest.request(params2);
     }
 
@@ -172,12 +202,17 @@ public class ItemStockReportFragment extends Fragment {
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
         params.put("report_by", "item");
-        params.put("id", selectedItem.getId());
+        params.put("id", String.valueOf(selectedItem.getId()));
 
         params.putAll(stockReportsActivity.getDateParams());
         params.putAll(stockReportsActivity.getRBParams());
 
         return params;
+    }
+
+    private void hideKeyboard(){
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
 }

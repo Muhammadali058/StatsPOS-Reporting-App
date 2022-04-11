@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Sales;
+package com.example.statspos.Adapters.Reports.Sales;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

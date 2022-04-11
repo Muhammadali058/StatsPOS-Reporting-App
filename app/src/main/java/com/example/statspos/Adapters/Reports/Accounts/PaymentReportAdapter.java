@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Accounts;
+package com.example.statspos.Adapters.Reports.Accounts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
-import com.example.statspos.databinding.JournalReportHolderBinding;
+import com.example.statspos.databinding.ReceiptsPaymentReportHolderBinding;
 
 import java.util.List;
 
-public class JournalReportAdapter extends RecyclerView.Adapter<JournalReportAdapter.ViewHolder> {
+public class PaymentReportAdapter extends RecyclerView.Adapter<PaymentReportAdapter.ViewHolder> {
 
     Context context;
     List<Ledger> list;
 
-    public JournalReportAdapter(Context context, List<Ledger> list) {
+    public PaymentReportAdapter(Context context, List<Ledger> list) {
         this.context = context;
         this.list = list;
     }
@@ -27,7 +27,7 @@ public class JournalReportAdapter extends RecyclerView.Adapter<JournalReportAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.journal_report_holder, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.receipts_payment_report_holder, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,8 +37,7 @@ public class JournalReportAdapter extends RecyclerView.Adapter<JournalReportAdap
 
         holder.binding.date.setText(ledger.getDate());
         holder.binding.naration.setText(ledger.getNaration());
-        holder.binding.debit.setText(ledger.getDebit());
-        holder.binding.credit.setText(ledger.getCredit());
+        holder.binding.amount.setText(ledger.getCredit());
     }
 
     @Override
@@ -47,10 +46,10 @@ public class JournalReportAdapter extends RecyclerView.Adapter<JournalReportAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        JournalReportHolderBinding binding;
+        ReceiptsPaymentReportHolderBinding binding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = JournalReportHolderBinding.bind(itemView);
+            binding = ReceiptsPaymentReportHolderBinding.bind(itemView);
         }
     }
 }

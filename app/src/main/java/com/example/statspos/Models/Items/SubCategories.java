@@ -3,31 +3,30 @@ package com.example.statspos.Models.Items;
 import androidx.annotation.NonNull;
 
 public class SubCategories {
-    int id;
-    String sub_category_name;
+    String id, subCategoryName;
 
     public SubCategories() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getSub_category_name() {
-        return sub_category_name;
+    public String getSubCategoryName() {
+        return subCategoryName;
     }
 
-    public void setSub_category_name(String sub_category_name) {
-        this.sub_category_name = sub_category_name;
+    public void setSubCategoryName(String subCategoryName) {
+        this.subCategoryName = subCategoryName;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return sub_category_name;
+        return subCategoryName;
     }
 }

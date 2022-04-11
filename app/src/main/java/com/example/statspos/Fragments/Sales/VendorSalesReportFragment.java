@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Sales.ItemsSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.Models.Accounts.Vendors;

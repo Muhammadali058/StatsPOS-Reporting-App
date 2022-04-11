@@ -12,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.StockReportsActivity;
-import com.example.statspos.Adapters.Stock.StockReportAdapter;
+import com.example.statspos.Adapters.Reports.Stock.StockReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.StockReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentTotalStockReportBinding;
-import com.example.statspos.databinding.FragmentVendorStockReportBinding;
 import com.example.statspos.databinding.StockReportHelperBinding;
 import com.google.gson.Gson;
 

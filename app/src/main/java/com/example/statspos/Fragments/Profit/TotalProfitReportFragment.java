@@ -6,13 +6,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.ProfitReportsActivity;
-import com.example.statspos.Adapters.Profit.TotalProfitReportAdapter;
+import com.example.statspos.Adapters.Reports.Profit.TotalProfitReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Profit.TotalProfitReport;
 import com.example.statspos.R;

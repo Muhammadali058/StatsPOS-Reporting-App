@@ -14,19 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Purchase.ItemsPurchaseReportAdapter;
-import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Purchase.ItemsPurchaseReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Categories;
 import com.example.statspos.Models.Items.SubCategories;
 import com.example.statspos.Models.Reports.Purchase.ItemsPurchaseReport;
-import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentCategoryPurchaseReportBinding;
-import com.example.statspos.databinding.FragmentCategorySalesReportBinding;
 import com.example.statspos.databinding.ItemsPurchaseReportHelperBinding;
-import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

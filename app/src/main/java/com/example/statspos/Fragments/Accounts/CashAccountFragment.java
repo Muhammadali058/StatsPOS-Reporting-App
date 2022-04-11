@@ -6,19 +6,16 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.AccountReportsActivity;
-import com.example.statspos.Adapters.Accounts.CashAccountAdapter;
-import com.example.statspos.Adapters.Accounts.LedgerReportAdapter;
+import com.example.statspos.Adapters.Reports.Accounts.CashAccountAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentCashAccountBinding;
-import com.example.statspos.databinding.LedgerReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

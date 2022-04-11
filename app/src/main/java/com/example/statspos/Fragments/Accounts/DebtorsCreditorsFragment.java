@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.AccountReportsActivity;
-import com.example.statspos.Adapters.Accounts.DebtorsCreditorsAdapter;
+import com.example.statspos.Adapters.Reports.Accounts.DebtorsCreditorsAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Accounts.DebtorsCreditors;
 import com.example.statspos.R;

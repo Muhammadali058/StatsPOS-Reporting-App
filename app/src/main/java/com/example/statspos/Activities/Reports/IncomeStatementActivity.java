@@ -5,19 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.example.statspos.Adapters.Accounts.CashAccountAdapter;
-import com.example.statspos.Adapters.Accounts.IncomeStatementAdapter;
+import com.example.statspos.Adapters.Reports.Accounts.IncomeStatementAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Accounts.IncomeStatement;
-import com.example.statspos.Models.Reports.Accounts.Ledger;
-import com.example.statspos.R;
-import com.example.statspos.databinding.ActivityAccountReportsBinding;
 import com.example.statspos.databinding.ActivityIncomeStatementBinding;
-import com.example.statspos.databinding.FragmentCashAccountBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

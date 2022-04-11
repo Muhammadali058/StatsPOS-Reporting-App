@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Sales.BriefSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Sales.BriefSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Sales.BriefSalesReport;
 import com.example.statspos.R;

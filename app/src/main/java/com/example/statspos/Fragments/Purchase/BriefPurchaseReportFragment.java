@@ -11,15 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Purchase.BriefPurchaseReportAdapter;
-import com.example.statspos.Adapters.Sales.BriefSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Purchase.BriefPurchaseReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Purchase.BriefPurchaseReport;
-import com.example.statspos.Models.Reports.Sales.BriefSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentBriefPurchaseReportBinding;
-import com.example.statspos.databinding.FragmentBriefSalesReportBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

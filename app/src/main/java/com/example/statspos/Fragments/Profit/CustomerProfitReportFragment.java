@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.ProfitReportsActivity;
-import com.example.statspos.Adapters.Profit.TotalProfitReportAdapter;
+import com.example.statspos.Adapters.Reports.Profit.TotalProfitReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Accounts.Customers;
 import com.example.statspos.Models.Reports.Profit.TotalProfitReport;

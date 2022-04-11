@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.AccountReportsActivity;
-import com.example.statspos.Adapters.Accounts.LedgerReportAdapter;
+import com.example.statspos.Adapters.Reports.Accounts.LedgerReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Accounts.Banks;
 import com.example.statspos.Models.Reports.Accounts.Ledger;

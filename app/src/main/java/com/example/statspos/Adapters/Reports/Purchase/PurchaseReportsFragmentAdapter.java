@@ -1,11 +1,10 @@
-package com.example.statspos.Adapters.Purchase;
+package com.example.statspos.Adapters.Reports.Purchase;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.statspos.Fragments.BriefSalesReportFragment;
 import com.example.statspos.Fragments.Purchase.BriefPurchaseReportFragment;
 import com.example.statspos.Fragments.Purchase.CategoryPurchaseReportFragment;
 import com.example.statspos.Fragments.Purchase.ChartPurchaseFragment;
@@ -13,13 +12,6 @@ import com.example.statspos.Fragments.Purchase.ItemPurchaseReportFragment;
 import com.example.statspos.Fragments.Purchase.TotalPurchaseReportFragment;
 import com.example.statspos.Fragments.Purchase.UserPurchaseReportFragment;
 import com.example.statspos.Fragments.Purchase.VendorPurchaseReportFragment;
-import com.example.statspos.Fragments.Sales.CategorySalesReportFragment;
-import com.example.statspos.Fragments.Sales.ChartSalesFragment;
-import com.example.statspos.Fragments.Sales.CustomerSalesReportFragment;
-import com.example.statspos.Fragments.Sales.ItemSalesReportFragment;
-import com.example.statspos.Fragments.Sales.TotalSalesReportFragment;
-import com.example.statspos.Fragments.Sales.UserSalesReportFragment;
-import com.example.statspos.Fragments.Sales.VendorSalesReportFragment;
 
 public class PurchaseReportsFragmentAdapter  extends FragmentStateAdapter {
 

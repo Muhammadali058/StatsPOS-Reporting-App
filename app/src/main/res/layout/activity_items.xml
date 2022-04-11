@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ItemsActivity"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/barcodeTbLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Barcode"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_send"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <AutoCompleteTextView
+                android:id="@+id/barcodeTB"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:textSize="12sp"
+                android:paddingLeft="15dp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:completionThreshold="1"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ref. Code"
+            android:layout_weight="2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/refCodeTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Itemname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/itemnameTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:layout_weight="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cost"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/costTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Retail"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/retailTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="W.Sale"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/wSaleTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Carton Rate"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/crtnRateTB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Save"
+            android:textSize="12sp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_bg"/>
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAllCaps="false"
+            android:text="Cancel"
+            android:textSize="12sp"
+            android:background="@drawable/button_bg"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchTbLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Itemname"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <AutoCompleteTextView
+            android:id="@+id/searchTB"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:paddingLeft="15dp"
+            android:textSize="12sp"
+            android:textColor="@color/textColor"
+            android:completionThreshold="1"
+            android:layout_weight="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:background="@color/blueLight">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Itemname"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Retail"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="W.Sale"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="C.Rate"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/headerPadding"
+                    android:text="Cost"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/headerTextSize"/>
+
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                tools:listitem="@layout/items_holder" />
+
+        </TableLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>

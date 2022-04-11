@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Purchase;
+package com.example.statspos.Adapters.Reports.Purchase;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
 import com.example.statspos.Models.Reports.Purchase.ItemsPurchaseReport;
-import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.ItemsPurchaseReportHolderBinding;
-import com.example.statspos.databinding.ItemsSalesReportHolderBinding;
 
 import java.util.List;
 

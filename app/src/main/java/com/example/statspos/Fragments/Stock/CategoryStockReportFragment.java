@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.StockReportsActivity;
-import com.example.statspos.Adapters.Stock.StockReportAdapter;
+import com.example.statspos.Adapters.Reports.Stock.StockReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Categories;
 import com.example.statspos.Models.Items.SubCategories;

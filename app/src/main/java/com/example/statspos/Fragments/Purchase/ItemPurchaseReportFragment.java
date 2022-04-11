@@ -14,18 +14,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Purchase.ItemsPurchaseReportAdapter;
-import com.example.statspos.Adapters.Sales.ItemsSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Purchase.ItemsPurchaseReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Items.Items;
 import com.example.statspos.Models.Reports.Purchase.ItemsPurchaseReport;
-import com.example.statspos.Models.Reports.Sales.ItemsSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentItemPurchaseReportBinding;
-import com.example.statspos.databinding.FragmentItemSalesReportBinding;
 import com.example.statspos.databinding.ItemsPurchaseReportHelperBinding;
-import com.example.statspos.databinding.ItemsSalesReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -44,7 +39,7 @@ public class ItemPurchaseReportFragment extends Fragment {
 
     ItemsPurchaseReportAdapter itemsPurchaseReportAdapter;
     List<ItemsPurchaseReport> list;
-    HP.ArrayRequest getItemObjectRequest;
+    HP.ArrayRequest getItemArrayRequest;
     HP.ObjectRequest objectRequest;
     PurchaseReportsActivity purchaseReportsActivity;
     Items selectedItem = null;
@@ -74,7 +69,7 @@ public class ItemPurchaseReportFragment extends Fragment {
         bindingInclude.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Request to getItem
-        getItemObjectRequest = new HP.ArrayRequest(getContext(), "items/getItem", new HP.ArrayRequest.OnResponseHandler() {
+        getItemArrayRequest = new HP.ArrayRequest(getContext(), "items/getItem", new HP.ArrayRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
@@ -131,7 +126,7 @@ public class ItemPurchaseReportFragment extends Fragment {
                 if(text != "") {
                     Map<String, String> params = new HashMap<>();
                     params.put("text", text);
-                    getItemObjectRequest.request(params);
+                    getItemArrayRequest.request(params);
                 }
             }
         });
@@ -177,7 +172,7 @@ public class ItemPurchaseReportFragment extends Fragment {
     }
 
     private void loadItems(){
-        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "items/searchItem", new HP.ObjectRequest.OnResponseHandler() {
+        HP.ObjectRequest objectRequest = new HP.ObjectRequest(getContext(), "items/loadItems", new HP.ObjectRequest.OnResponseHandler() {
             @Override
             public void onResponse(JSONObject response) {
                 Gson gson = new Gson();
@@ -198,7 +193,6 @@ public class ItemPurchaseReportFragment extends Fragment {
         });
 
         Map<String, String> params2 = new HashMap<>();
-        params2.put("text", "");
         objectRequest.request(params2);
     }
 
@@ -212,7 +206,7 @@ public class ItemPurchaseReportFragment extends Fragment {
     private Map<String, String> getParams(){
         Map<String, String> params = new HashMap<>();
         params.put("report_by", "item");
-        params.put("id", selectedItem.getId());
+        params.put("id", String.valueOf(selectedItem.getId()));
 
         params.putAll(purchaseReportsActivity.getDateParams());
         params.putAll(purchaseReportsActivity.getRBParams());

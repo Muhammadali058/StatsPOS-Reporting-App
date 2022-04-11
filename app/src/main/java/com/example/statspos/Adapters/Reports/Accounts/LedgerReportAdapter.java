@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Accounts;
+package com.example.statspos.Adapters.Reports.Accounts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
-import com.example.statspos.databinding.ReceiptsPaymentReportHolderBinding;
+import com.example.statspos.databinding.LedgerReportHolderBinding;
 
 import java.util.List;
 
-public class ReceiptsReportAdapter extends RecyclerView.Adapter<ReceiptsReportAdapter.ViewHolder> {
+public class LedgerReportAdapter extends RecyclerView.Adapter<LedgerReportAdapter.ViewHolder> {
 
     Context context;
     List<Ledger> list;
 
-    public ReceiptsReportAdapter(Context context, List<Ledger> list) {
+    public LedgerReportAdapter(Context context, List<Ledger> list) {
         this.context = context;
         this.list = list;
     }
@@ -27,7 +27,7 @@ public class ReceiptsReportAdapter extends RecyclerView.Adapter<ReceiptsReportAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.receipts_payment_report_holder, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.ledger_report_holder, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,7 +37,19 @@ public class ReceiptsReportAdapter extends RecyclerView.Adapter<ReceiptsReportAd
 
         holder.binding.date.setText(ledger.getDate());
         holder.binding.naration.setText(ledger.getNaration());
-        holder.binding.amount.setText(ledger.getDebit());
+        holder.binding.debit.setText(ledger.getDebit());
+        holder.binding.credit.setText(ledger.getCredit());
+
+        long balance = Long.valueOf(ledger.getOldBalance()) + Long.valueOf(ledger.getBalance());
+        String drOrCr = "";
+        if(balance < 0)
+            drOrCr = "Cr";
+        else if(balance == 0)
+            drOrCr = "";
+        else
+            drOrCr = "Dr";
+
+        holder.binding.balance.setText(Math.abs(balance) + " " + drOrCr);
     }
 
     @Override
@@ -46,10 +58,10 @@ public class ReceiptsReportAdapter extends RecyclerView.Adapter<ReceiptsReportAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ReceiptsPaymentReportHolderBinding binding;
+        LedgerReportHolderBinding binding;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = ReceiptsPaymentReportHolderBinding.bind(itemView);
+            binding = LedgerReportHolderBinding.bind(itemView);
         }
     }
 }

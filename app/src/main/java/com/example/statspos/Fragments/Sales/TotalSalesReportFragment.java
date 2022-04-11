@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Sales.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Sales.TotalSalesReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Sales.TotalSalesReport;
 import com.example.statspos.R;

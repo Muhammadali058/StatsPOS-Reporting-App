@@ -11,17 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.statspos.Activities.Reports.PurchaseReportsActivity;
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
-import com.example.statspos.Adapters.Purchase.TotalPurchaseReportAdapter;
-import com.example.statspos.Adapters.Sales.TotalSalesReportAdapter;
+import com.example.statspos.Adapters.Reports.Purchase.TotalPurchaseReportAdapter;
 import com.example.statspos.HP;
 import com.example.statspos.Models.Reports.Purchase.TotalPurchaseReport;
-import com.example.statspos.Models.Reports.Sales.TotalSalesReport;
 import com.example.statspos.R;
 import com.example.statspos.databinding.FragmentTotalPurchaseReportBinding;
-import com.example.statspos.databinding.FragmentTotalSalesReportBinding;
 import com.example.statspos.databinding.TotalPurchaseReportHelperBinding;
-import com.example.statspos.databinding.TotalSalesReportHelperBinding;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

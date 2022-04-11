@@ -1,4 +1,4 @@
-package com.example.statspos.Adapters.Accounts;
+package com.example.statspos.Adapters.Reports.Accounts;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.statspos.Models.Reports.Accounts.Ledger;
 import com.example.statspos.R;
 import com.example.statspos.databinding.CashAccountHolderBinding;
-import com.example.statspos.databinding.LedgerReportHolderBinding;
 
 import java.util.List;
 

@@ -3,31 +3,30 @@ package com.example.statspos.Models.Accounts;
 import androidx.annotation.NonNull;
 
 public class Banks {
-    int id;
-    String bank_name;
+    String id, bankName;
 
     public Banks() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getBank_name() {
-        return bank_name;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setBank_name(String bank_name) {
-        this.bank_name = bank_name;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return bank_name;
+        return bankName;
     }
 }
