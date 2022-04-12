@@ -2,17 +2,17 @@ package com.example.statspos;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.os.Build;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.view.textclassifier.TextSelection;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
-import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,7 +21,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.statspos.Activities.Reports.SalesReportsActivity;
 import com.example.statspos.Models.Settings;
 import com.google.gson.Gson;
 
@@ -29,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -237,6 +237,55 @@ public class HP {
         public interface OnResponseHandler{
             void onResponse(String response);
         }
+    }
+
+    public static class MultipartPostRequest {
+        Context context;
+        String url;
+        OnResponseHandler onResponseHandler;
+
+        public MultipartPostRequest(Context context, String url, OnResponseHandler onResponseHandler) {
+            this.context = context;
+            this.url = api + url;
+            this.onResponseHandler = onResponseHandler;
+        }
+
+        public void request(Map<String, VolleyMultipartRequest.DataPart> params){
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+            VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+                @Override
+                public void onResponse(NetworkResponse response) {
+                    onResponseHandler.onResponse(new String(response.data));
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+//                    Log.i("Error = ", error.toString());
+                    Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+                }
+            }) {
+                @Override
+                protected Map<String, DataPart> getByteData() {
+//                    Map<String, DataPart> params = new HashMap<>();
+//                    params.put("image", new DataPart("filename.jpg", AppHelper.getFileDataFromDrawable(context, binding.imageView.getDrawable()), "image/jpeg"));
+                    return params;
+                }
+            };
+
+            requestQueue.add(multipartRequest);
+        }
+
+        public interface OnResponseHandler{
+            void onResponse(String response);
+        }
+    }
+
+    public static byte[] getFileDataFromBitmap(Context context, Bitmap bitmap) {
+//        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
     }
 
     public static class OnDateClickListener implements View.OnClickListener {
