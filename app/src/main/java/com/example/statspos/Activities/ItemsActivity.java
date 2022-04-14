@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.example.statspos.Adapters.Items.ItemsAdapter;
 import com.example.statspos.HP;
@@ -138,11 +141,33 @@ public class ItemsActivity extends AppCompatActivity {
             }
         });
 
+        binding.barcodeTB.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if(i == EditorInfo.IME_ACTION_SEARCH){
+                    getItem();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         // SearchTB click listener
         binding.searchTbLayout.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchItems();
+            }
+        });
+
+        binding.searchTB.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if(i == EditorInfo.IME_ACTION_SEARCH){
+                    searchItems();
+                    return true;
+                }
+                return false;
             }
         });
 
